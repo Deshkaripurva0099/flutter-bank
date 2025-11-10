@@ -40,6 +40,39 @@ dependencies:
   signature: ^6.1.0  
   intl: ^0.20.2
 
+
+  
+  # 🎥 For playing videos (used in Video KYC / PAN verification)
+  video_player: ^2.9.2
+
+  # 📸 For camera functionality in KYC
+  camera_camera: ^3.0.0
+
+
+
+ 
+
+  # 🎯 For image cropping (optional)
+  image_cropper: ^11.0.0
+
+  # 🔐 For security and encryption
+  crypto: ^3.0.3
+
+  # 🌐 For API calls
+  http: ^1.2.2
+
+  # 💾 For local storage
+  shared_preferences: ^2.3.2
+
+  # 📧 For email validation
+  email_validator: ^3.0.0
+
+  # 🔢 For OTP fields
+  pin_code_fields: ^8.0.1
+
+
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -95,3 +128,5 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+
