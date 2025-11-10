@@ -25,23 +25,18 @@ class _NavbarTopState extends State<NavbarTop> {
       title: Row(
         children: [
           SizedBox(
-            width: 70,
-            height: 70,
+            width: 120,
+            height: 120,
             child: Image.asset('assets/logo.png', fit: BoxFit.contain),
           ),
 
-          const SizedBox(width: 2),
-
-          const Text(
-            'NeoBank',
-            style: TextStyle(
-              color: Color.fromARGB(255, 134, 9, 0),
-              fontSize: 18,
-              fontWeight: FontWeight.w900,
-            ),
-          ),
-
-          const SizedBox(width: 10),
+          // Logo
+          // SizedBox(
+          //   width: MediaQuery.of(context).size.width * 0.35,
+          //   height: MediaQuery.of(context).size.width * 0.35,
+          //   child: Image.asset('assets/logo.png', fit: BoxFit.contain),
+          // ),
+          const SizedBox(width: 20),
 
           // Search icon or field
           Expanded(

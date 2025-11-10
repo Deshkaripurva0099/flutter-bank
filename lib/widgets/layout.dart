@@ -70,7 +70,6 @@ class _AppLayoutState extends State<AppLayout> {
             title: const Text('Deposit'),
             onTap: () {
               Navigator.pop(context);
-              Navigator.pushNamed(context, '/pages/deposit');
             },
           ),
           ListTile(
@@ -109,7 +108,6 @@ class _AppLayoutState extends State<AppLayout> {
             title: const Text('Services'),
             onTap: () {
               Navigator.pop(context);
-              Navigator.pushNamed(context, '/pages/services');
             },
           ),
           ListTile(
