@@ -5,6 +5,8 @@ import 'package:neobank/pages/international_transfer_page.dart';
 import 'package:neobank/pages/money_transfer_page.dart';
 import 'package:neobank/pages/neft.dart';
 import 'package:neobank/pages/profile.dart';
+import 'package:neobank/pages/services.dart';
+import 'package:neobank/pages/deposit.dart';
 
 import 'package:neobank/pages/rtgs.dart';
 import 'package:neobank/pages/send_money_page.dart';
@@ -37,6 +39,8 @@ class _NeoBankAppState extends State<NeoBankApp> {
         '/pages/international_transfer_page': (context) =>
             const InternationalTransferPage(),
         '/pages/profile': (context) => ProfileSection(),
+        '/pages/services': (context) => const ServicesPage(),
+        '/pages/deposit': (context) => const DepositsPageUnique(),
       },
     );
   }
