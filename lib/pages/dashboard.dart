@@ -253,7 +253,7 @@ class _DashboardPageState extends State<DashboardPage> {
                 children: [
                   Expanded(
                     child: SizedBox(
-                      height: 140,
+                      height: 160,
                       child: _buildStatCard(
                         title: "Monthly Spending",
                         value: "₹15,750",
@@ -265,7 +265,7 @@ class _DashboardPageState extends State<DashboardPage> {
                   const SizedBox(width: 12),
                   Expanded(
                     child: SizedBox(
-                      height: 140,
+                      height: 160,
                       child: _buildStatCard(
                         title: "Investment Growth",
                         value: "₹2,45,000",
@@ -277,7 +277,7 @@ class _DashboardPageState extends State<DashboardPage> {
                   const SizedBox(width: 12),
                   Expanded(
                     child: SizedBox(
-                      height: 140,
+                      height: 160,
                       child: _buildStatCard(
                         title: "Credit Score",
                         value: "785",
@@ -289,7 +289,7 @@ class _DashboardPageState extends State<DashboardPage> {
                 ],
               ),
             ),
-            const SizedBox(height: 40),
+            const SizedBox(height: 30),
             // // Insights & Reports
             // _sectionTitle("Insights & Reports"),
             // Padding(
