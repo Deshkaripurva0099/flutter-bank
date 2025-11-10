@@ -254,6 +254,7 @@ class _DashboardPageState extends State<DashboardPage> {
                   Expanded(
                     child: SizedBox(
                       height: 160,
+
                       child: _buildStatCard(
                         title: "Monthly Spending",
                         value: "₹15,750",
@@ -266,6 +267,7 @@ class _DashboardPageState extends State<DashboardPage> {
                   Expanded(
                     child: SizedBox(
                       height: 160,
+
                       child: _buildStatCard(
                         title: "Investment Growth",
                         value: "₹2,45,000",
@@ -278,6 +280,7 @@ class _DashboardPageState extends State<DashboardPage> {
                   Expanded(
                     child: SizedBox(
                       height: 160,
+
                       child: _buildStatCard(
                         title: "Credit Score",
                         value: "785",

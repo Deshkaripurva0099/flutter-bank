@@ -69,7 +69,7 @@ class _AppLayoutState extends State<AppLayout> {
             leading: const Icon(Icons.wallet, color: Color(0xFF900603)),
             title: const Text('Deposit'),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.pushNamed(context, '/pages/deposit');
             },
           ),
           ListTile(
@@ -107,7 +107,7 @@ class _AppLayoutState extends State<AppLayout> {
             leading: const Icon(Icons.support_agent, color: Color(0xFF900603)),
             title: const Text('Services'),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.pushNamed(context, '/pages/services');
             },
           ),
           ListTile(

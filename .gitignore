@@ -1,6 +1,7 @@
 # Miscellaneous
 *.class
 <<<<<<< HEAD
+<<<<<<< HEAD
 *.lock
 *.log
 *.pyc
@@ -119,6 +120,8 @@ app.*.symbols
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 !/dev/ci/**/Gemfile.lock
 =======
+=======
+>>>>>>> vaibhav_branch
 *.log
 *.pyc
 *.swp
@@ -162,4 +165,7 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+<<<<<<< HEAD
 >>>>>>> 2de5b3d (Initial commit)
+=======
+>>>>>>> vaibhav_branch

@@ -233,6 +233,7 @@ class _MoneyTransferPageState extends State<MoneyTransferPage> {
                     title,
                     style: const TextStyle(
                       fontSize: 12,
+
                       fontWeight: FontWeight.bold,
                     ),
                   ),
