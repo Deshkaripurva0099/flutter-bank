@@ -212,7 +212,7 @@ class _FdCalculatorPageState extends State<FdCalculatorPage> {
                             children: [
                               const Text("₹1,000"),
                               Text(
-                                "₹" + depositAmount.toStringAsFixed(0),
+                                "₹${depositAmount.toStringAsFixed(0)}",
                                 style: const TextStyle(
                                   color: fdPrimaryColor,
                                   fontWeight: FontWeight.bold,
@@ -241,7 +241,7 @@ class _FdCalculatorPageState extends State<FdCalculatorPage> {
                             children: [
                               const Text("1"),
                               Text(
-                                "${tenure.toStringAsFixed(0)}",
+                                tenure.toStringAsFixed(0),
                                 style: const TextStyle(
                                   color: fdPrimaryColor,
                                   fontWeight: FontWeight.bold,
