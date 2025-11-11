@@ -7,6 +7,7 @@ import 'package:neobank/pages/neft.dart';
 import 'package:neobank/pages/profile.dart';
 import 'package:neobank/pages/services.dart';
 import 'package:neobank/pages/deposit.dart';
+import 'package:neobank/pages/signupscreen.dart';
 
 import 'package:neobank/pages/rtgs.dart';
 import 'package:neobank/pages/send_money_page.dart';
@@ -27,7 +28,7 @@ class _NeoBankAppState extends State<NeoBankApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const DashboardPage(),
+      home: const SignupScreen(),
       routes: {
         '/pages/money_transfer_page': (context) => const MoneyTransferPage(),
 

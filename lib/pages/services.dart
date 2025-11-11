@@ -4,6 +4,7 @@ import 'neobank_account_open_form.dart'; // Import the new form
 import 'fixed_deposit.dart'; // Import Fixed Deposit form
 import 'rd_page.dart'; // Import RD Page
 import 'deposit.dart';
+import '../widgets/layout.dart'; // Import AppLayout
 
 class ServicesPage extends StatefulWidget {
   const ServicesPage({super.key});
@@ -115,24 +116,44 @@ class _ServicesPageState extends State<ServicesPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Our Services"),
-        centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 148, 12, 3),
-      ),
-      body: Stack(
+    return AppLayout(
+      child: Stack(
         children: [
           Container(
             color: const Color.fromARGB(255, 246, 243, 243),
             child: SingleChildScrollView(
-              padding: const EdgeInsets.all(16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    "Explore all the banking services we provide",
-                    style: kSubtitleStyle,
+                  // ===== HEADER =====
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 20,
+                      horizontal: 24,
+                    ),
+                    decoration: const BoxDecoration(color: Color(0xFF900603)),
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Services",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: const Text(
+                      "Explore all the banking services we provide",
+                      style: kSubtitleStyle,
+                    ),
                   ),
                   const SizedBox(height: 20),
                   // 🔹 Category-wise list
@@ -140,7 +161,13 @@ class _ServicesPageState extends State<ServicesPage> {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(cat["category"], style: kCategoryTitleStyle),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 16),
+                          child: Text(
+                            cat["category"],
+                            style: kCategoryTitleStyle,
+                          ),
+                        ),
                         const SizedBox(height: 10),
                         GridView.count(
                           crossAxisCount: 2,
@@ -168,7 +195,12 @@ class _ServicesPageState extends State<ServicesPage> {
                                     });
                                   },
                                   child: Container(
-                                    margin: const EdgeInsets.all(6),
+                                    margin: const EdgeInsets.only(
+                                      left: 16,
+                                      top: 6,
+                                      right: 6,
+                                      bottom: 6,
+                                    ),
                                     decoration: BoxDecoration(
                                       color: isHovered
                                           ? const Color.fromARGB(
@@ -200,10 +232,18 @@ class _ServicesPageState extends State<ServicesPage> {
                                           ),
                                           const SizedBox(height: 4),
                                           Flexible(
-                                            child: Text(
-                                              serviceLabel,
-                                              textAlign: TextAlign.center,
-                                              style: kCardTextStyle,
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                    horizontal: 8.0,
+                                                  ),
+                                              child: Text(
+                                                serviceLabel,
+                                                textAlign: TextAlign.center,
+                                                style: kCardTextStyle,
+                                                overflow: TextOverflow.ellipsis,
+                                                maxLines: 2,
+                                              ),
                                             ),
                                           ),
                                         ],

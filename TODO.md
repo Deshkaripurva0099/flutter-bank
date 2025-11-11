@@ -1,13 +1,7 @@
-# TODO: Connect Services and Deposit Pages to Sidebar Navigation
+# TODO List
 
-## Steps to Complete:
-- [x] Add routes for '/pages/services' and '/pages/deposit' in main.dart
-- [x] Update onTap handlers in layout.dart for "Services" and "Deposit" ListTiles to navigate to the new routes
-- [ ] Test navigation to ensure pages load correctly
-
-# TODO: Fix Untracked Assets Images
-
-## Steps to Complete:
-- [x] Add fd-banner.png and neobank_logo.png to pubspec.yaml assets section
-- [x] Add the new assets to git
-- [x] Verify git status shows assets as tracked
+- [x] Add left padding to service texts in Services module to prevent text from going outside containers for categories: Accounts, Loans, Cards, Payment, Digital Banking, Security & Support, Popular Services.
+- [x] Change text alignment to left for better visibility.
+- [x] Change container alignment to centerLeft and add overflow handling.
+- [x] Apply left padding to the entire container and align content to start.
+- [x] Revert to center alignment with horizontal padding for text.
