@@ -157,7 +157,7 @@ class _UpdateKYCState extends State<UpdateKYC> {
                         height: 100,
                         width: 100,
                         child: Image.asset(
-                          'assets/images/neobank-white.png',
+                          'assets/neobank-white.png',
                           fit: BoxFit.contain,
                           errorBuilder: (context, error, stackTrace) {
                             return Icon(

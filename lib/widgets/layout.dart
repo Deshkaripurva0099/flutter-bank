@@ -63,6 +63,7 @@ class _AppLayoutState extends State<AppLayout> {
             title: const Text('My Account'),
             onTap: () {
               Navigator.pop(context);
+              Navigator.pushNamed(context, '/myAccount');
             },
           ),
           ListTile(
@@ -96,11 +97,12 @@ class _AppLayoutState extends State<AppLayout> {
               Navigator.pop(context);
             },
           ),
-          ListTile(
+           ListTile(
             leading: const Icon(Icons.credit_card, color: Color(0xFF900603)),
             title: const Text('Cards'),
             onTap: () {
               Navigator.pop(context);
+              Navigator.pushNamed(context, '/cards');
             },
           ),
           ListTile(

@@ -24,7 +24,7 @@ class _ClientCardState extends State<ClientCard> {
       'interestRate': '18.99% p.a.',
       'features':
           '5x points on dining and travel, 2x points on all other purchases, complimentary airport lounge access, fraud protection.',
-      'image': 'assets/images/Card1.png',
+      'image': 'assets/Card1.png',
     },
     {
       'id': 2,
@@ -38,7 +38,7 @@ class _ClientCardState extends State<ClientCard> {
       'interestRate': '18.99% p.a.',
       'features':
           '5x points on dining and travel, 2x points on all other purchases, complimentary airport lounge access, fraud protection.',
-      'image': 'assets/images/Card2.png',
+      'image': 'assets/Card2.png',
     },
     {
       'id': 3,
@@ -52,7 +52,7 @@ class _ClientCardState extends State<ClientCard> {
       'interestRate': '18.99% p.a.',
       'features':
           '5x points on dining and travel, 2x points on all other purchases, complimentary airport lounge access, fraud protection.',
-      'image': 'assets/images/Card1.png',
+      'image': 'assets/Card1.png',
     },
   ];
 

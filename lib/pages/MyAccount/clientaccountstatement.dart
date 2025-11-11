@@ -70,7 +70,7 @@ class _AccountStatementState extends State<AccountStatement> {
                         width: 60,
                         height: 60,
                         child: Image.asset(
-                          'assets/images/neobank-white.png',
+                          'assets/neobank-white.png',
                           fit: BoxFit.contain,
                           errorBuilder: (context, error, stackTrace) {
                             return Icon(

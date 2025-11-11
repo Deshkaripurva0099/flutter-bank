@@ -277,7 +277,7 @@ class _ChequeBookRequestState extends State<ChequeBookRequest> {
                             height: 60,
                             width: 60,
                             child: Image.asset(
-                              'assets/images/neobank-white.png',
+                              'assets/neobank-white.png',
                               fit: BoxFit.contain,
                               errorBuilder: (context, error, stackTrace) {
                                 return Icon(

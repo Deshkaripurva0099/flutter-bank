@@ -214,7 +214,7 @@ class _AccountClosureState extends State<AccountClosure> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                'assets/images/neobank-white.png',
+                'assets/neobank-white.png',
                 height: 55,
                 fit: BoxFit.contain,
                 errorBuilder: (context, error, stackTrace) {
