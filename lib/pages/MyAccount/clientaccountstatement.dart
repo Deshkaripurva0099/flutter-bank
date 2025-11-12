@@ -44,7 +44,7 @@ class _AccountStatementState extends State<AccountStatement> {
         child: Center(
           child: Container(
             width: 900,
-            height: 530,
+            height: 580,
             margin: const EdgeInsets.all(20),
             decoration: BoxDecoration(
               color: Colors.white,
@@ -57,7 +57,7 @@ class _AccountStatementState extends State<AccountStatement> {
               children: [
                 // Top Section - Red Background
                 Container(
-                  height: 80, // Reduced height since steps are removed
+                  height: 100, // Reduced height since steps are removed
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
                     color: primaryRed,
@@ -67,8 +67,8 @@ class _AccountStatementState extends State<AccountStatement> {
                     children: [
                       // Bank Image - Directly on red background
                       Container(
-                        width: 60,
-                        height: 60,
+                        width: 70,
+                        height: 70,
                         child: Image.asset(
                           'assets/neobank-white.png',
                           fit: BoxFit.contain,
@@ -76,12 +76,12 @@ class _AccountStatementState extends State<AccountStatement> {
                             return Icon(
                               Icons.account_balance,
                               color: Colors.white,
-                              size: 30,
+                              size: 35,
                             );
                           },
                         ),
                       ),
-                      const SizedBox(width: 15),
+                      const SizedBox(width: 20),
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -91,11 +91,11 @@ class _AccountStatementState extends State<AccountStatement> {
                               "Neo Bank Account Statement",
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 16,
+                                fontSize: 18,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            const SizedBox(height: 3),
+                            const SizedBox(height: 6),
                             const Text(
                               "Follow these steps to download your account statement",
                               style: TextStyle(color: Colors.white70, fontSize: 10),
@@ -111,11 +111,11 @@ class _AccountStatementState extends State<AccountStatement> {
                 // Bottom Section - White Background
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.all(12),
+                    padding: const EdgeInsets.all(16),
                     child: Column(
                       children: [
                         _buildStepperHeader(), // This is the progress bar that remains
-                        const SizedBox(height: 12),
+                        const SizedBox(height: 20),
                         Expanded(
                           child: SingleChildScrollView(
                             child: _buildCurrentStep(),
@@ -135,10 +135,10 @@ class _AccountStatementState extends State<AccountStatement> {
 
   Widget _buildStepperHeader() {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 10),
+      padding: const EdgeInsets.symmetric(vertical: 16),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey.shade300),
-        borderRadius: BorderRadius.circular(6),
+        borderRadius: BorderRadius.circular(8),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -212,20 +212,20 @@ class _AccountStatementState extends State<AccountStatement> {
           "Step 1: Account Verification",
           style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
         ),
-        const SizedBox(height: 12),
+        const SizedBox(height: 20),
         
         // Account Number
         const Text(
           "Account Number",
           style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
         ),
-        const SizedBox(height: 5),
+        const SizedBox(height: 8),
         TextField(
           controller: accountController,
           decoration: const InputDecoration(
             hintText: "Enter Account Number",
             border: OutlineInputBorder(),
-            contentPadding: EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+            contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
           ),
         ),
         
@@ -295,9 +295,9 @@ class _AccountStatementState extends State<AccountStatement> {
               style: OutlinedButton.styleFrom(
                 side: BorderSide(color: primaryRed),
                 foregroundColor: primaryRed,
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 6),
+                padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 14),
               ),
-              child: const Text("Back", style: TextStyle(fontSize: 12)),
+              child: const Text("Back", style: TextStyle(fontSize: 14)),
             ),
             ElevatedButton(
               onPressed: enteredCaptcha == captcha && accountController.text.isNotEmpty
@@ -305,9 +305,10 @@ class _AccountStatementState extends State<AccountStatement> {
                   : null,
               style: ElevatedButton.styleFrom(
                 backgroundColor: primaryRed,
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 6),
+                foregroundColor: Colors.white,
+                padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 14),
               ),
-              child: const Text("Next", style: TextStyle(fontSize: 12)),
+              child: const Text("Next", style: TextStyle(fontSize: 14)),
             ),
           ],
         ),
@@ -374,6 +375,7 @@ class _AccountStatementState extends State<AccountStatement> {
                   : null,
               style: ElevatedButton.styleFrom(
                 backgroundColor: primaryRed,
+                foregroundColor: Colors.white,
                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 6),
               ),
               child: const Text("Next", style: TextStyle(fontSize: 12)),
@@ -518,6 +520,7 @@ class _AccountStatementState extends State<AccountStatement> {
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: primaryRed,
+                foregroundColor: Colors.white,
                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 6),
               ),
               child: const Text("Submit", style: TextStyle(fontSize: 12)),

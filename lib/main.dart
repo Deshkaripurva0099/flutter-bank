@@ -74,11 +74,7 @@ class _NeoBankAppState extends State<NeoBankApp> {
         '/cards': (context) => AppLayout(child: const ClientCard()),
         '/ClientCard2': (context) => AppLayout(child: ClientCard2()),
         '/applyNewCard': (context) => AppLayout(child: const ApplyNewCard()),
-
-
         
-
- 
       },
     );
   }
