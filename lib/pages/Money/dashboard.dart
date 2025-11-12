@@ -2,11 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:neobank/pages/Cards/ClienCard.dart';
-import 'package:neobank/pages/add_money.dart';
+import 'package:neobank/pages/Money/add_money.dart';
+import 'package:neobank/pages/Money/paybills_page.dart';
+import 'package:neobank/pages/Money/send_money_page.dart';
+
 import 'package:neobank/pages/deposit.dart';
 import 'package:neobank/pages/investment/investment_page.dart';
-import 'package:neobank/pages/paybills_page.dart';
-import 'package:neobank/pages/send_money_page.dart';
+
 import 'package:neobank/widgets/layout.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 

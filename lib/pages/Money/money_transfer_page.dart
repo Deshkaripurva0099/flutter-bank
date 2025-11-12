@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:neobank/pages/domastic_transfer.dart';
+import 'package:neobank/pages/Money/domastic_transfer.dart';
+
 import 'package:neobank/widgets/layout.dart';
 import 'package:neobank/widgets/transfer_card.dart';
 import 'send_money_page.dart';

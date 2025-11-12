@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'signupscreen.dart'; // Make sure this import points to your SignupScreen
+import 'package:neobank/pages/SignIN/signupscreen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -116,7 +116,10 @@ class _SplashScreenState extends State<SplashScreen>
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20),
-                  child: Image.asset('assets/purva.png', fit: BoxFit.cover),
+                  child: Image.asset(
+                    'assets/neobank_logo.png',
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),

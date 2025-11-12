@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:neobank/pages/Money/dashboard.dart';
 import 'signup_screen_styles.dart';
-import 'dashboard.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
