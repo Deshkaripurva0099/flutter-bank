@@ -62,7 +62,7 @@ class _AppLayoutState extends State<AppLayout> {
             leading: const Icon(Icons.person, color: Color(0xFF900603)),
             title: const Text('My Account'),
             onTap: () {
-              Navigator.pushNamed(context, '/pages/my_account');
+              Navigator.pushNamed(context, '/pages/myAccount');
             },
           ),
           ListTile(

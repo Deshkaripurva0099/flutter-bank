@@ -39,6 +39,7 @@ dependencies:
   image_picker: ^1.1.0  
   signature: ^6.1.0  
   intl: ^0.20.2
+
   camera_camera: ^3.0.0
 #signature: ^6.3.0
 #image_picker: ^1.1.2
@@ -81,9 +82,17 @@ flutter:
   assets:
     #- assets/neo.png
     - assets/logo.png
+
     - assets/fd-banner.png
     - assets/neobank_logo.png
     - assets/purva.png
+
+    - assets/neobank-white.png
+    - assets/Card1.png
+    - assets/Card2.png
+    
+    
+   # - assets/logo2.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -111,3 +120,5 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+
