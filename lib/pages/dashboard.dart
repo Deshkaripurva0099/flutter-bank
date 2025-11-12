@@ -1,7 +1,10 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:neobank/pages/Cards/ClienCard.dart';
 import 'package:neobank/pages/add_money.dart';
+import 'package:neobank/pages/deposit.dart';
+import 'package:neobank/pages/investment/investment_page.dart';
 import 'package:neobank/pages/paybills_page.dart';
 import 'package:neobank/pages/send_money_page.dart';
 import 'package:neobank/widgets/layout.dart';
@@ -132,6 +135,7 @@ class _DashboardPageState extends State<DashboardPage> {
                         borderRadius: BorderRadius.circular(14),
                         onTap: () {
                           final label = action['label'];
+
                           if (label == "Send Money") {
                             Navigator.push(
                               context,
@@ -153,8 +157,31 @@ class _DashboardPageState extends State<DashboardPage> {
                                 builder: (context) => const AddMoneyPage(),
                               ),
                             );
+                          } else if (label == "Investment") {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const InvestmentPage(),
+                              ),
+                            );
+                          } else if (label == "Fixed Deposit") {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const DepositsPageUnique(),
+                              ),
+                            );
+                          } else if (label == "Cards") {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const ClientCard(),
+                              ),
+                            );
                           }
                         },
+
                         child: Container(
                           decoration: BoxDecoration(
                             color: Colors.white,

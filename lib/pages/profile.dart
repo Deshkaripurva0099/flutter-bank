@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
+import 'package:neobank/widgets/layout.dart';
 import 'package:neobank/widgets/topbar.dart';
 
 const Color primaryColor = Color(0xFF900603);
@@ -1704,16 +1705,15 @@ class _ProfileSectionState extends State<ProfileSection> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: backgroundColor,
-      appBar: NavbarTop(),
-      body: Column(
+    return AppLayout(
+      child: Column(
         children: [
+          // Profile header
           _buildProfileHeader(),
 
+          // Tab buttons
           Container(
             color: Colors.white,
-
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -1730,6 +1730,7 @@ class _ProfileSectionState extends State<ProfileSection> {
             ),
           ),
 
+          // Active tab content
           Expanded(
             child: SingleChildScrollView(
               padding: const EdgeInsets.all(16.0),

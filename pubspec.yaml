@@ -85,7 +85,7 @@ flutter:
     - assets/neobank_logo.png
 
 
-   # - assets/logo2.png
+    - assets/purva.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

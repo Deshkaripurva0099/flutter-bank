@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:neobank/widgets/topbar.dart';
+import 'package:neobank/widgets/layout.dart';
 
 class HistoryPage extends StatefulWidget {
   const HistoryPage({super.key});
@@ -43,10 +43,8 @@ class _HistoryPageState extends State<HistoryPage> {
           (tx["type"]?.toString().toLowerCase().contains(lowerSearch) ?? false);
     }).toList();
 
-    return Scaffold(
-      appBar: NavbarTop(),
-      backgroundColor: const Color(0xFFF8F9FA),
-      body: SafeArea(
+    return AppLayout(
+      child: SafeArea(
         child: Column(
           children: [
             // Header

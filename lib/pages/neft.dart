@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:neobank/widgets/layout.dart';
 import 'package:neobank/widgets/topbar.dart';
 
 class NEFTFormPage extends StatefulWidget {
@@ -71,13 +72,8 @@ class _NEFTFormPageState extends State<NEFTFormPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: NavbarTop(),
-
-      backgroundColor: const Color(0xFFF8F9FA),
-      resizeToAvoidBottomInset: true,
-
-      body: GestureDetector(
+    return AppLayout(
+      child: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
