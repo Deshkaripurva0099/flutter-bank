@@ -589,6 +589,8 @@ class _MyAccountsPageState extends State<MyAccountsPage> {
       backgroundColor: const Color.fromARGB(255, 248, 248, 248),
       appBar: AppBar(
         backgroundColor: primaryRed,
+
+        automaticallyImplyLeading: false,
         toolbarHeight: 75,
         title: Container(
           padding: const EdgeInsets.symmetric(vertical: 12),
@@ -612,7 +614,7 @@ class _MyAccountsPageState extends State<MyAccountsPage> {
             ],
           ),
         ),
-        iconTheme: const IconThemeData(color: Colors.white),
+        //iconTheme: const IconThemeData(color: Colors.white),
         actions: [
           // Open New Account Dropdown
           PopupMenuButton<int>(

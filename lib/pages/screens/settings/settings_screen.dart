@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:neobank/pages/screens/settings/general_settings.dart';
+import 'package:neobank/widgets/layout.dart';
 import 'quick_settings.dart';
 import 'account_info.dart';
 import 'security_options.dart';
@@ -36,96 +37,99 @@ class SettingsScreen extends StatelessWidget {
       },
     ];
 
-    return Scaffold(
-      backgroundColor: const Color(0xFFF8F8F8),
-      body: LayoutBuilder(
-        builder: (context, constraints) {
-          final isMobile = constraints.maxWidth < 600;
-          final isTablet =
-              constraints.maxWidth >= 600 && constraints.maxWidth < 992;
+    return AppLayout(
+      child: Scaffold(
+        backgroundColor: const Color(0xFFF8F8F8),
+        body: LayoutBuilder(
+          builder: (context, constraints) {
+            final isMobile = constraints.maxWidth < 600;
+            final isTablet =
+                constraints.maxWidth >= 600 && constraints.maxWidth < 992;
 
-          int crossAxisCount = 2;
-          double childAspectRatio = 1.2;
+            int crossAxisCount = 2;
+            double childAspectRatio = 1.2;
 
-          if (isMobile) {
-            crossAxisCount = 1;
-            childAspectRatio = 1.4;
-          } else if (isTablet) {
-            crossAxisCount = 2;
-            childAspectRatio = 1.3;
-          }
+            if (isMobile) {
+              crossAxisCount = 1;
+              childAspectRatio = 1.4;
+            } else if (isTablet) {
+              crossAxisCount = 2;
+              childAspectRatio = 1.3;
+            }
 
-          return SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Header
-                Container(
-                  width: double.infinity,
-                  padding: EdgeInsets.symmetric(
-                    horizontal: isMobile ? 16 : 32,
-                    vertical: isMobile ? 20 : 25,
-                  ),
-                  decoration: const BoxDecoration(color: Color(0xFF900603)),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Settings',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: isMobile ? 22 : 28,
-                          fontWeight: FontWeight.bold,
+            return SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Header
+                  Container(
+                    width: double.infinity,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: isMobile ? 16 : 32,
+                      vertical: isMobile ? 20 : 25,
+                    ),
+                    decoration: const BoxDecoration(color: Color(0xFF900603)),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Settings',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: isMobile ? 22 : 28,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        'Manage your account preferences and security',
-                        style: TextStyle(
-                          color: Colors.white.withOpacity(0.9),
-                          fontSize: isMobile ? 12 : 14,
+                        const SizedBox(height: 4),
+                        Text(
+                          'Manage your account preferences and security',
+                          style: TextStyle(
+                            color: Colors.white.withOpacity(0.9),
+                            fontSize: isMobile ? 12 : 14,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
 
-                // Main Cards Grid
-                Padding(
-                  padding: EdgeInsets.all(isMobile ? 12 : 20),
-                  child: Column(
-                    children: [
-                      GridView.builder(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: crossAxisCount,
-                          mainAxisSpacing: isMobile ? 12 : 20,
-                          crossAxisSpacing: isMobile ? 12 : 20,
-                          childAspectRatio: childAspectRatio,
+                  // Main Cards Grid
+                  Padding(
+                    padding: EdgeInsets.all(isMobile ? 12 : 20),
+                    child: Column(
+                      children: [
+                        GridView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: crossAxisCount,
+                                mainAxisSpacing: isMobile ? 12 : 20,
+                                crossAxisSpacing: isMobile ? 12 : 20,
+                                childAspectRatio: childAspectRatio,
+                              ),
+                          itemCount: settings.length,
+                          itemBuilder: (context, index) {
+                            final item = settings[index];
+                            return _buildSettingCard(context, item, isMobile);
+                          },
                         ),
-                        itemCount: settings.length,
-                        itemBuilder: (context, index) {
-                          final item = settings[index];
-                          return _buildSettingCard(context, item, isMobile);
-                        },
-                      ),
 
-                      SizedBox(height: isMobile ? 20 : 30),
+                        SizedBox(height: isMobile ? 20 : 30),
 
-                      // Extra Sections
-                      const QuickSettings(),
-                      SizedBox(height: isMobile ? 15 : 20),
-                      const AccountInfo(),
-                      SizedBox(height: isMobile ? 15 : 20),
-                      const SecurityOptions(),
-                    ],
+                        // Extra Sections
+                        const QuickSettings(),
+                        SizedBox(height: isMobile ? 15 : 20),
+                        const AccountInfo(),
+                        SizedBox(height: isMobile ? 15 : 20),
+                        const SecurityOptions(),
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            ),
-          );
-        },
+                ],
+              ),
+            );
+          },
+        ),
       ),
     );
   }

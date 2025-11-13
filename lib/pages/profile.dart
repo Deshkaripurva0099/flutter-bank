@@ -3,9 +3,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
-import 'package:neobank/pages/SignIN/signupscreen.dart';
-import 'package:neobank/widgets/layout.dart' hide ListTile, Divider;
-import 'package:neobank/widgets/topbar.dart';
+
+import 'package:neobank/pages/signinscreen.dart';
+import 'package:neobank/widgets/layout.dart';
 
 const Color primaryColor = Color(0xFF900603);
 const Color secondaryColor = Color(0xFFb91c1c);
@@ -1752,7 +1752,7 @@ class _ProfileSectionState extends State<ProfileSection> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const SignupScreen(),
+                        builder: (context) => const SigninScreen(),
                       ),
                     );
                   },

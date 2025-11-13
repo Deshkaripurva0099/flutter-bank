@@ -2,18 +2,8 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:neobank/pages/Cards/clientcard.dart';
-import 'package:neobank/pages/Money/add_money.dart';
-import 'package:neobank/pages/Money/paybills_page.dart';
-import 'package:neobank/pages/Money/send_money_page.dart';
-
-import 'package:neobank/pages/deposit.dart';
-import 'package:neobank/pages/investment/investment_page.dart';
-
 import 'package:neobank/widgets/layout.dart';
 import 'package:lucide_icons/lucide_icons.dart';
-
-import 'package:neobank/pages/Cards/clientcard.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
@@ -32,7 +22,7 @@ class _DashboardPageState extends State<DashboardPage> {
     {"icon": LucideIcons.creditCard, "label": "Pay Bills"},
     {"icon": LucideIcons.trendingUp, "label": "Investment"},
     {"icon": LucideIcons.piggyBank, "label": "Fixed Deposit"},
-    {"icon": LucideIcons.creditCard, "label": "Card"},
+    {"icon": LucideIcons.creditCard, "label": "Cards"},
   ];
 
   final List<Map<String, String>> accounts = [
@@ -191,53 +181,32 @@ class _DashboardPageState extends State<DashboardPage> {
 
                           switch (label) {
                             case "Send Money":
-                              Navigator.push(
+                              Navigator.pushNamed(
                                 context,
-                                MaterialPageRoute(
-                                  builder: (_) => const SendMoneyPage(),
-                                ),
+                                '/pages/send_money_page',
                               );
                               break;
                             case "Pay Bills":
-                              Navigator.push(
+                              Navigator.pushNamed(
                                 context,
-                                MaterialPageRoute(
-                                  builder: (_) => const PayBillsPage(),
-                                ),
+                                '/pages/pay_bills_page',
                               );
                               break;
                             case "Add Money":
-                              Navigator.push(
+                              Navigator.pushNamed(
                                 context,
-                                MaterialPageRoute(
-                                  builder: (_) => const AddMoneyPage(),
-                                ),
+                                '/pages/add_money_page',
                               );
                               break;
                             case "Investment":
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (_) => const InvestmentPage(),
-                                ),
-                              );
+                              Navigator.pushNamed(context, '/investment');
                               break;
                             case "Fixed Deposit":
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (_) => const DepositsPageUnique(),
-                                ),
-                              );
+                              Navigator.pushNamed(context, '/deposit');
                               break;
                             case "Cards":
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      AppLayout(child: const ClientCard()), //
-                                ),
-                              );
+                              Navigator.pushNamed(context, '/cards'); // ✅ Clean
+                              break;
                           }
                         },
 

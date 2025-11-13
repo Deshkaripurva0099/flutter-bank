@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:neobank/pages/SignIN/signupscreen.dart';
+import 'package:neobank/pages/signinscreen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -57,7 +57,7 @@ class _SplashScreenState extends State<SplashScreen>
       Navigator.of(context).pushReplacement(
         PageRouteBuilder(
           pageBuilder: (context, animation, secondaryAnimation) =>
-              const SignupScreen(),
+              const SigninScreen(),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             return FadeTransition(opacity: animation, child: child);
           },

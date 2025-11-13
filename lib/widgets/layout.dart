@@ -64,11 +64,13 @@ class _AppLayoutState extends State<AppLayout> {
               Navigator.pushNamed(context, '/myAccount');
             },
           ),
+
           ListTile(
             leading: const Icon(Icons.wallet, color: Color(0xFF900603)),
             title: const Text('Deposit'),
             onTap: () {
               Navigator.pop(context);
+              Navigator.pushNamed(context, '/deposit');
             },
           ),
           ListTile(
@@ -79,6 +81,7 @@ class _AppLayoutState extends State<AppLayout> {
             title: const Text('Loan'),
             onTap: () {
               Navigator.pop(context);
+              Navigator.pushNamed(context, '/loan_cards'); // Add
             },
           ),
           ListTile(
@@ -92,7 +95,7 @@ class _AppLayoutState extends State<AppLayout> {
             leading: const Icon(Icons.trending_up, color: Color(0xFF900603)),
             title: const Text('Investment'),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.pushNamed(context, '/investment'); // route string
             },
           ),
           ListTile(
@@ -108,6 +111,7 @@ class _AppLayoutState extends State<AppLayout> {
             title: const Text('Services'),
             onTap: () {
               Navigator.pop(context);
+              Navigator.pushNamed(context, '/services');
             },
           ),
           ListTile(
@@ -122,6 +126,7 @@ class _AppLayoutState extends State<AppLayout> {
             title: const Text('Complaints'),
             onTap: () {
               Navigator.pop(context);
+              Navigator.pushNamed(context, '/complaints');
             },
           ),
           Divider(),
@@ -130,6 +135,7 @@ class _AppLayoutState extends State<AppLayout> {
             title: const Text('Settings'),
             onTap: () {
               Navigator.pop(context);
+              Navigator.pushNamed(context, '/pages/screens/settings_screen');
             },
           ),
         ],

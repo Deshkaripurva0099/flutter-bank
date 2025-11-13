@@ -91,7 +91,9 @@ class _SecurityScreenState extends State<SecurityScreen> {
   Future<void> _saveSettings() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(
-        'security_settings', jsonEncode(securitySettings.toJson()));
+      'security_settings',
+      jsonEncode(securitySettings.toJson()),
+    );
   }
 
   void _calculateSecurityScore() {
@@ -180,6 +182,31 @@ class _SecurityScreenState extends State<SecurityScreen> {
 
   @override
   Widget build(BuildContext context) {
+    return AppLayout(
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final isMobile = constraints.maxWidth < 600;
+
+          return SingleChildScrollView(
+            child: Column(
+              children: [
+                _buildHeader(isMobile),
+                Padding(
+                  padding: EdgeInsets.all(isMobile ? 12 : 16),
+                  child: isMobile
+                      ? _buildMobileLayout()
+                      : _buildDesktopLayout(),
+                ),
+              ],
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
         final isMobile = constraints.maxWidth < 600;
@@ -192,8 +219,9 @@ class _SecurityScreenState extends State<SecurityScreen> {
                 _buildHeader(isMobile),
                 Padding(
                   padding: EdgeInsets.all(isMobile ? 12 : 16),
-                  child:
-                      isMobile ? _buildMobileLayout() : _buildDesktopLayout(),
+                  child: isMobile
+                      ? _buildMobileLayout()
+                      : _buildDesktopLayout(),
                 ),
               ],
             ),
@@ -212,11 +240,7 @@ class _SecurityScreenState extends State<SecurityScreen> {
       decoration: const BoxDecoration(
         color: Color(0xFF960603),
         boxShadow: [
-          BoxShadow(
-            color: Colors.black26,
-            blurRadius: 6,
-            offset: Offset(0, 2),
-          ),
+          BoxShadow(color: Colors.black26, blurRadius: 6, offset: Offset(0, 2)),
         ],
       ),
       child: Row(
@@ -319,8 +343,8 @@ class _SecurityScreenState extends State<SecurityScreen> {
     String scoreText = securityScore >= 90
         ? 'Excellent'
         : securityScore >= 70
-            ? 'Strong'
-            : 'Weak';
+        ? 'Strong'
+        : 'Weak';
 
     return _buildCard(
       isMobile: isMobile,
@@ -380,10 +404,7 @@ class _SecurityScreenState extends State<SecurityScreen> {
           SizedBox(height: isMobile ? 12 : 16),
           Text(
             'Enable more options or update your password to improve your security score.',
-            style: TextStyle(
-              fontSize: isMobile ? 11 : 13,
-              color: Colors.grey,
-            ),
+            style: TextStyle(fontSize: isMobile ? 11 : 13, color: Colors.grey),
             textAlign: TextAlign.center,
           ),
         ],
@@ -474,9 +495,7 @@ class _SecurityScreenState extends State<SecurityScreen> {
               onPressed: _handlePasswordUpdate,
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFF900603),
-                padding: EdgeInsets.symmetric(
-                  vertical: isMobile ? 10 : 12,
-                ),
+                padding: EdgeInsets.symmetric(vertical: isMobile ? 10 : 12),
               ),
               child: Text(
                 'Update Password',
@@ -590,13 +609,9 @@ class _SecurityScreenState extends State<SecurityScreen> {
             }
 
             return Container(
-              padding: EdgeInsets.symmetric(
-                vertical: isMobile ? 10 : 12,
-              ),
+              padding: EdgeInsets.symmetric(vertical: isMobile ? 10 : 12),
               decoration: const BoxDecoration(
-                border: Border(
-                  bottom: BorderSide(color: Color(0xFFDEE2E6)),
-                ),
+                border: Border(bottom: BorderSide(color: Color(0xFFDEE2E6))),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

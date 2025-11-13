@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
+import 'package:neobank/pages/screens/loan_dashboard.dart';
+import 'package:neobank/pages/signinscreen.dart';
+import 'package:neobank/pages/signup_screen.dart';
 
 // Splash & Auth
 import 'package:neobank/pages/splash_screen.dart';
-import 'package:neobank/pages/SignIN/signupscreen.dart';
 
 // Money Transfer & Dashboard
 import 'package:neobank/pages/Money/dashboard.dart';
@@ -39,19 +40,10 @@ import 'package:neobank/pages/investment/investment_page.dart';
 
 // Layout
 import 'widgets/layout.dart';
-=======
-import 'package:neobank/pages/dashboard.dart';
-import 'package:neobank/pages/imps.dart';
-import 'package:neobank/pages/international_transfer_page.dart';
-import 'package:neobank/pages/money_transfer_page.dart';
-import 'package:neobank/pages/neft.dart';
-import 'package:neobank/pages/profile.dart';
-import 'package:neobank/pages/rtgs.dart';
-import 'package:neobank/pages/screens/loan_dashboard.dart';
+
 import 'package:neobank/pages/screens/loan_products.dart';
-import 'package:neobank/pages/send_money_page.dart';
+
 import 'package:neobank/pages/screens/settings/settings_screen.dart';
->>>>>>> Amruta_loan_settings
 
 void main() {
   runApp(const NeoBankApp());
@@ -71,22 +63,21 @@ class _NeoBankAppState extends State<NeoBankApp> {
       debugShowCheckedModeBanner: false,
       home: const SplashScreen(),
       routes: {
-<<<<<<< HEAD
         // Auth
         '/signup': (context) => const SignupScreen(),
+        '/signin': (context) => const SigninScreen(),
+        // // Money
+        // '/dashboard': (context) => const DashboardPage(),
+        // '/moneyTransfer': (context) => const MoneyTransferPage(),
+        // '/sendMoney': (context) => const SendMoneyPage(),
+        // '/internationalTransfer': (context) =>
+        //     const InternationalTransferPage(),
+        // '/neft': (context) => NEFTFormPage(),
+        // '/imps': (context) => ImpsFormPage(),
+        // '/rtgs': (context) => RtgsFormPage(),
 
-        // Money
-        '/dashboard': (context) => const DashboardPage(),
-        '/moneyTransfer': (context) => const MoneyTransferPage(),
-        '/sendMoney': (context) => const SendMoneyPage(),
-        '/internationalTransfer': (context) =>
-            const InternationalTransferPage(),
-        '/neft': (context) => NEFTFormPage(),
-        '/imps': (context) => ImpsFormPage(),
-        '/rtgs': (context) => RtgsFormPage(),
-
-        // Profile
-        '/profile': (context) => ProfileSection(),
+        // // Profile
+        // '/profile': (context) => ProfileSection(),
 
         // Services
         '/services': (context) => const ServicesPage(),
@@ -94,8 +85,8 @@ class _NeoBankAppState extends State<NeoBankApp> {
         '/complaints': (context) => ComplaintFeedback(),
         '/investment': (context) => InvestmentPage(),
 
-        // My Account (Wrapped in AppLayout)
-        '/myAccount': (context) => MyAccountsPage(),
+        // :briefcase: My Account Section (Wrapped in AppLayout)
+        '/myAccount': (context) => AppLayout(child: const MyAccountsPage()),
         '/personalDetails': (context) =>
             AppLayout(child: const PersonalDetailsPage()),
         '/aadharVerification': (context) =>
@@ -112,10 +103,10 @@ class _NeoBankAppState extends State<NeoBankApp> {
             AppLayout(child: const ChequeBookRequest()),
 
         // Cards (Wrapped in AppLayout)
-        '/cards': (context) => const ClientCard(),
+        '/cards': (context) => AppLayout(child: ClientCard()),
         '/clientCard2': (context) => AppLayout(child: ClientCard2()),
         '/applyNewCard': (context) => AppLayout(child: const ApplyNewCard()),
-=======
+
         '/pages/money_transfer_page': (context) => const MoneyTransferPage(),
         '/pages/dashboard': (context) => const DashboardPage(),
         '/pages/neft': (context) => NEFTFormPage(),
@@ -125,12 +116,12 @@ class _NeoBankAppState extends State<NeoBankApp> {
         '/pages/international_transfer_page': (context) =>
             const InternationalTransferPage(),
         '/pages/profile': (context) => ProfileSection(),
-        '/pages/screens/loan_dashboard': (context) => const LoanDashboard(),
+
         '/pages/screens/settings_screen': (context) => const SettingsScreen(),
 
         // ✅ Added missing route to fix your error
         '/client/loan-products': (context) => const LoanProducts(),
->>>>>>> Amruta_loan_settings
+        '/loan_cards': (context) => const LoanDashboard(),
       },
     );
   }

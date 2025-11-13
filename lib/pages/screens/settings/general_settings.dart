@@ -78,30 +78,47 @@ class _GeneralSettingsState extends State<GeneralSettings> {
   @override
   Widget build(BuildContext context) {
     final isDark = theme == 'Dark';
-    final backgroundColor = isDark ? const Color(0xFF121212) : const Color(0xFFF8F9FA);
+    final backgroundColor = isDark
+        ? const Color(0xFF121212)
+        : const Color(0xFFF8F9FA);
     final cardColor = isDark ? const Color(0xFF1E1E1E) : Colors.white;
-    final textColor = isDark ? const Color(0xFFF1F1F1) : const Color(0xFF212529);
-    final subtitleColor = isDark ? const Color(0xFFCFCFCF) : const Color(0xFF6C757D);
+    final textColor = isDark
+        ? const Color(0xFFF1F1F1)
+        : const Color(0xFF212529);
+    final subtitleColor = isDark
+        ? const Color(0xFFCFCFCF)
+        : const Color(0xFF6C757D);
 
     return Scaffold(
       backgroundColor: backgroundColor,
       body: LayoutBuilder(
         builder: (context, constraints) {
           final isMobile = constraints.maxWidth < 600;
-          final isTablet = constraints.maxWidth >= 600 && constraints.maxWidth < 992;
+          final isTablet =
+              constraints.maxWidth >= 600 && constraints.maxWidth < 992;
 
           return SingleChildScrollView(
             child: Column(
               children: [
                 // Header
                 _buildHeader(isMobile),
-                
+
                 // Content
                 Padding(
                   padding: EdgeInsets.all(isMobile ? 12 : 16),
                   child: isMobile
-                      ? _buildMobileLayout(cardColor, textColor, subtitleColor, isMobile)
-                      : _buildDesktopLayout(cardColor, textColor, subtitleColor, isMobile),
+                      ? _buildMobileLayout(
+                          cardColor,
+                          textColor,
+                          subtitleColor,
+                          isMobile,
+                        )
+                      : _buildDesktopLayout(
+                          cardColor,
+                          textColor,
+                          subtitleColor,
+                          isMobile,
+                        ),
                 ),
 
                 // Footer Buttons
@@ -124,11 +141,7 @@ class _GeneralSettingsState extends State<GeneralSettings> {
       decoration: const BoxDecoration(
         color: Color(0xFF960603),
         boxShadow: [
-          BoxShadow(
-            color: Colors.black26,
-            blurRadius: 6,
-            offset: Offset(0, 2),
-          ),
+          BoxShadow(color: Colors.black26, blurRadius: 6, offset: Offset(0, 2)),
         ],
       ),
       child: Row(
@@ -178,7 +191,12 @@ class _GeneralSettingsState extends State<GeneralSettings> {
     );
   }
 
-  Widget _buildMobileLayout(Color cardColor, Color textColor, Color subtitleColor, bool isMobile) {
+  Widget _buildMobileLayout(
+    Color cardColor,
+    Color textColor,
+    Color subtitleColor,
+    bool isMobile,
+  ) {
     return Column(
       children: [
         _buildThemeCard(cardColor, textColor, subtitleColor, isMobile),
@@ -194,7 +212,12 @@ class _GeneralSettingsState extends State<GeneralSettings> {
     );
   }
 
-  Widget _buildDesktopLayout(Color cardColor, Color textColor, Color subtitleColor, bool isMobile) {
+  Widget _buildDesktopLayout(
+    Color cardColor,
+    Color textColor,
+    Color subtitleColor,
+    bool isMobile,
+  ) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -203,7 +226,12 @@ class _GeneralSettingsState extends State<GeneralSettings> {
             children: [
               _buildThemeCard(cardColor, textColor, subtitleColor, isMobile),
               const SizedBox(height: 24),
-              _buildNotificationCard(cardColor, textColor, subtitleColor, isMobile),
+              _buildNotificationCard(
+                cardColor,
+                textColor,
+                subtitleColor,
+                isMobile,
+              ),
             ],
           ),
         ),
@@ -223,7 +251,12 @@ class _GeneralSettingsState extends State<GeneralSettings> {
     );
   }
 
-  Widget _buildThemeCard(Color cardColor, Color textColor, Color subtitleColor, bool isMobile) {
+  Widget _buildThemeCard(
+    Color cardColor,
+    Color textColor,
+    Color subtitleColor,
+    bool isMobile,
+  ) {
     return Container(
       padding: EdgeInsets.all(isMobile ? 15 : 20),
       decoration: BoxDecoration(
@@ -268,17 +301,31 @@ class _GeneralSettingsState extends State<GeneralSettings> {
           ),
           SizedBox(height: isMobile ? 8 : 12),
           ...[
-            {'name': 'Light', 'icon': Icons.wb_sunny, 'desc': 'Clean and bright interface'},
-            {'name': 'Dark', 'icon': Icons.nightlight_round, 'desc': 'Easy on the eyes in low light'},
-            {'name': 'Auto', 'icon': Icons.devices, 'desc': 'Follows your device settings'},
-          ].map((item) => _buildThemeOption(
-                item['name'] as String,
-                item['icon'] as IconData,
-                item['desc'] as String,
-                cardColor,
-                textColor,
-                isMobile,
-              )),
+            {
+              'name': 'Light',
+              'icon': Icons.wb_sunny,
+              'desc': 'Clean and bright interface',
+            },
+            {
+              'name': 'Dark',
+              'icon': Icons.nightlight_round,
+              'desc': 'Easy on the eyes in low light',
+            },
+            {
+              'name': 'Auto',
+              'icon': Icons.devices,
+              'desc': 'Follows your device settings',
+            },
+          ].map(
+            (item) => _buildThemeOption(
+              item['name'] as String,
+              item['icon'] as IconData,
+              item['desc'] as String,
+              cardColor,
+              textColor,
+              isMobile,
+            ),
+          ),
           Divider(height: isMobile ? 24 : 32),
           Text(
             'Display Options',
@@ -289,12 +336,27 @@ class _GeneralSettingsState extends State<GeneralSettings> {
             ),
           ),
           SizedBox(height: isMobile ? 8 : 12),
-          _buildSwitchRow('Compact View', 'Reduce spacing and padding', compactView,
-              (val) => setState(() => compactView = val), isMobile),
-          _buildSwitchRow('Animations', 'Enable smooth transitions', animations,
-              (val) => setState(() => animations = val), isMobile),
-          _buildSwitchRow('Sound Effects', 'Play sounds for actions', soundEffects,
-              (val) => setState(() => soundEffects = val), isMobile),
+          _buildSwitchRow(
+            'Compact View',
+            'Reduce spacing and padding',
+            compactView,
+            (val) => setState(() => compactView = val),
+            isMobile,
+          ),
+          _buildSwitchRow(
+            'Animations',
+            'Enable smooth transitions',
+            animations,
+            (val) => setState(() => animations = val),
+            isMobile,
+          ),
+          _buildSwitchRow(
+            'Sound Effects',
+            'Play sounds for actions',
+            soundEffects,
+            (val) => setState(() => soundEffects = val),
+            isMobile,
+          ),
         ],
       ),
     );
@@ -428,7 +490,12 @@ class _GeneralSettingsState extends State<GeneralSettings> {
     );
   }
 
-  Widget _buildNotificationCard(Color cardColor, Color textColor, Color subtitleColor, bool isMobile) {
+  Widget _buildNotificationCard(
+    Color cardColor,
+    Color textColor,
+    Color subtitleColor,
+    bool isMobile,
+  ) {
     return Container(
       padding: EdgeInsets.all(isMobile ? 15 : 20),
       decoration: BoxDecoration(
@@ -489,7 +556,12 @@ class _GeneralSettingsState extends State<GeneralSettings> {
     );
   }
 
-  Widget _buildLanguageCard(Color cardColor, Color textColor, Color subtitleColor, bool isMobile) {
+  Widget _buildLanguageCard(
+    Color cardColor,
+    Color textColor,
+    Color subtitleColor,
+    bool isMobile,
+  ) {
     return Container(
       padding: EdgeInsets.all(isMobile ? 15 : 20),
       decoration: BoxDecoration(
@@ -581,9 +653,7 @@ class _GeneralSettingsState extends State<GeneralSettings> {
         DropdownButtonFormField<String>(
           value: value,
           decoration: InputDecoration(
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(6),
-            ),
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
             contentPadding: EdgeInsets.symmetric(
               horizontal: isMobile ? 10 : 12,
               vertical: isMobile ? 6 : 8,
@@ -600,7 +670,12 @@ class _GeneralSettingsState extends State<GeneralSettings> {
     );
   }
 
-  Widget _buildPrivacyCard(Color cardColor, Color textColor, Color subtitleColor, bool isMobile) {
+  Widget _buildPrivacyCard(
+    Color cardColor,
+    Color textColor,
+    Color subtitleColor,
+    bool isMobile,
+  ) {
     return Container(
       padding: EdgeInsets.all(isMobile ? 15 : 20),
       decoration: BoxDecoration(
@@ -717,10 +792,7 @@ class _GeneralSettingsState extends State<GeneralSettings> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            label,
-            style: TextStyle(fontSize: isMobile ? 12 : 14),
-          ),
+          Text(label, style: TextStyle(fontSize: isMobile ? 12 : 14)),
           Flexible(
             child: Text(
               value,
