@@ -5,7 +5,6 @@ import 'topbar.dart';
 class AppLayout extends StatefulWidget {
   final Widget child;
   const AppLayout({super.key, required this.child});
-
   @override
   State<AppLayout> createState() => _AppLayoutState();
 }
@@ -30,7 +29,6 @@ class _AppLayoutState extends State<AppLayout> {
             decoration: const BoxDecoration(color: Colors.white),
             child: Center(child: Image.asset('assets/logo.png', height: 140)),
           ),
-
           // UserAccountsDrawerHeader(
           //   decoration: const BoxDecoration(color: Color(0xFF900603)),
           //   accountName: const Text('Purvi D', style: TextStyle(fontSize: 18)),
@@ -63,6 +61,7 @@ class _AppLayoutState extends State<AppLayout> {
             title: const Text('My Account'),
             onTap: () {
               Navigator.pop(context);
+              Navigator.pushNamed(context, '/myAccount');
             },
           ),
           ListTile(
@@ -70,7 +69,6 @@ class _AppLayoutState extends State<AppLayout> {
             title: const Text('Deposit'),
             onTap: () {
               Navigator.pop(context);
-              Navigator.pushNamed(context, '/pages/deposit');
             },
           ),
           ListTile(
@@ -102,6 +100,7 @@ class _AppLayoutState extends State<AppLayout> {
             title: const Text('Cards'),
             onTap: () {
               Navigator.pop(context);
+              Navigator.pushNamed(context, '/cards');
             },
           ),
           ListTile(
@@ -109,7 +108,6 @@ class _AppLayoutState extends State<AppLayout> {
             title: const Text('Services'),
             onTap: () {
               Navigator.pop(context);
-              Navigator.pushNamed(context, '/pages/services');
             },
           ),
           ListTile(

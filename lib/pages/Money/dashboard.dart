@@ -1,11 +1,19 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:neobank/pages/add_money.dart';
-import 'package:neobank/pages/paybills_page.dart';
-import 'package:neobank/pages/send_money_page.dart';
+
+import 'package:neobank/pages/Cards/clientcard.dart';
+import 'package:neobank/pages/Money/add_money.dart';
+import 'package:neobank/pages/Money/paybills_page.dart';
+import 'package:neobank/pages/Money/send_money_page.dart';
+
+import 'package:neobank/pages/deposit.dart';
+import 'package:neobank/pages/investment/investment_page.dart';
+
 import 'package:neobank/widgets/layout.dart';
 import 'package:lucide_icons/lucide_icons.dart';
+
+import 'package:neobank/pages/Cards/clientcard.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
@@ -130,31 +138,109 @@ class _DashboardPageState extends State<DashboardPage> {
                       final action = actions[index];
                       return InkWell(
                         borderRadius: BorderRadius.circular(14),
+                        // onTap: () {
+                        //   final label = action['label'];
+
+                        //   if (label == "Send Money") {
+                        //     Navigator.push(
+                        //       context,
+                        //       MaterialPageRoute(
+                        //         builder: (context) => const SendMoneyPage(),
+                        //       ),
+                        //     );
+                        //   } else if (label == "Pay Bills") {
+                        //     Navigator.push(
+                        //       context,
+                        //       MaterialPageRoute(
+                        //         builder: (context) => const PayBillsPage(),
+                        //       ),
+                        //     );
+                        //   } else if (label == "Add Money") {
+                        //     Navigator.push(
+                        //       context,
+                        //       MaterialPageRoute(
+                        //         builder: (context) => const AddMoneyPage(),
+                        //       ),
+                        //     );
+                        //   } else if (label == "Investment") {
+                        //     Navigator.push(
+                        //       context,
+                        //       MaterialPageRoute(
+                        //         builder: (context) => const InvestmentPage(),
+                        //       ),
+                        //     );
+                        //   } else if (label == "Fixed Deposit") {
+                        //     Navigator.push(
+                        //       context,
+                        //       MaterialPageRoute(
+                        //         builder: (context) =>
+                        //             const DepositsPageUnique(),
+                        //       ),
+                        //     );
+                        //   } else if (label == "Cards") {
+                        //     Navigator.push(
+                        //       context,
+                        //       MaterialPageRoute(
+                        //         builder: (context) => const ClientCard(),
+                        //       ),
+                        //     );
+                        //   }
+                        // },
                         onTap: () {
                           final label = action['label'];
-                          if (label == "Send Money") {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const SendMoneyPage(),
-                              ),
-                            );
-                          } else if (label == "Pay Bills") {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const PayBillsPage(),
-                              ),
-                            );
-                          } else if (label == "Add Money") {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const AddMoneyPage(),
-                              ),
-                            );
+
+                          switch (label) {
+                            case "Send Money":
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => const SendMoneyPage(),
+                                ),
+                              );
+                              break;
+                            case "Pay Bills":
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => const PayBillsPage(),
+                                ),
+                              );
+                              break;
+                            case "Add Money":
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => const AddMoneyPage(),
+                                ),
+                              );
+                              break;
+                            case "Investment":
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => const InvestmentPage(),
+                                ),
+                              );
+                              break;
+                            case "Fixed Deposit":
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => const DepositsPageUnique(),
+                                ),
+                              );
+                              break;
+                            case "Cards":
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      AppLayout(child: const ClientCard()), //
+                                ),
+                              );
                           }
                         },
+
                         child: Container(
                           decoration: BoxDecoration(
                             color: Colors.white,
@@ -253,7 +339,8 @@ class _DashboardPageState extends State<DashboardPage> {
                 children: [
                   Expanded(
                     child: SizedBox(
-                      height: 140,
+                      height: 160,
+
                       child: _buildStatCard(
                         title: "Monthly Spending",
                         value: "₹15,750",
@@ -265,7 +352,8 @@ class _DashboardPageState extends State<DashboardPage> {
                   const SizedBox(width: 12),
                   Expanded(
                     child: SizedBox(
-                      height: 140,
+                      height: 160,
+
                       child: _buildStatCard(
                         title: "Investment Growth",
                         value: "₹2,45,000",
@@ -277,7 +365,8 @@ class _DashboardPageState extends State<DashboardPage> {
                   const SizedBox(width: 12),
                   Expanded(
                     child: SizedBox(
-                      height: 140,
+                      height: 160,
+
                       child: _buildStatCard(
                         title: "Credit Score",
                         value: "785",
