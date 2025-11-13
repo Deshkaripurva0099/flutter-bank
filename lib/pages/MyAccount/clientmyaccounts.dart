@@ -396,7 +396,7 @@ class _MyAccountsPageState extends State<MyAccountsPage> {
     backgroundColor: Colors.grey, // Grey background
     foregroundColor: Colors.white, // White text color
   ),
-  child: const Text("Close"),
+  child: const Text("Clo"),
 ),
                       const SizedBox(width: 8),
                       ElevatedButton.icon(

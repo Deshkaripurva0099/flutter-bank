@@ -7,6 +7,9 @@ import 'package:neobank/pages/send_money_page.dart';
 import 'package:neobank/widgets/layout.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
+import 'package:neobank/pages/Cards/clientcard.dart';
+
+
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
 
@@ -151,6 +154,15 @@ class _DashboardPageState extends State<DashboardPage> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) => const AddMoneyPage(),
+                              ),
+                            );
+                          }
+                          else if (label == "Card") {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => AppLayout(child: const ClientCard()),
+                               
                               ),
                             );
                           }
