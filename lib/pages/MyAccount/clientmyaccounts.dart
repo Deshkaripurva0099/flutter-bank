@@ -396,7 +396,7 @@ class _MyAccountsPageState extends State<MyAccountsPage> {
     backgroundColor: Colors.grey, // Grey background
     foregroundColor: Colors.white, // White text color
   ),
-  child: const Text("Clo"),
+  child: const Text("Close"),
 ),
                       const SizedBox(width: 8),
                       ElevatedButton.icon(
@@ -492,6 +492,7 @@ class _MyAccountsPageState extends State<MyAccountsPage> {
                           style: TextButton.styleFrom(
                             backgroundColor: Colors.grey, // Grey background
                             foregroundColor: Colors.white, // White text color
+                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                             ),
                             child: const Text("Cancel"),
                             ),
@@ -534,6 +535,7 @@ class _MyAccountsPageState extends State<MyAccountsPage> {
       appBar: AppBar(
         backgroundColor: primaryRed,
         toolbarHeight: 75,
+        automaticallyImplyLeading: false, 
         title: Container(
           padding: const EdgeInsets.symmetric(vertical: 12),
           child: Column(

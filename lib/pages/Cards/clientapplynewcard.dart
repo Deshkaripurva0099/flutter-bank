@@ -58,6 +58,7 @@ class _ApplyNewCardState extends State<ApplyNewCard> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: primaryRed,
+        foregroundColor: Colors.white,
         title: const Text("Apply New Card"),
         centerTitle: true,
         automaticallyImplyLeading: false,
