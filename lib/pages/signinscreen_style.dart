@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class SignupScreenStyles {
+class SigninScreenStyles {
   // ===================== Container =====================
   static const LinearGradient containerGradient = LinearGradient(
     colors: [Color(0xFF900603), Color(0xFF0F172A), Color(0xFF900603)],

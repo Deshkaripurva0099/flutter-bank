@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
-import 'signup_screen_styles.dart';
+import 'package:flutter/gestures.dart';
+import 'signinscreen_style.dart';
 import 'dashboard.dart';
+import 'signup_screen.dart';
 
-class SignupScreen extends StatefulWidget {
-  const SignupScreen({super.key});
+class SigninScreen extends StatefulWidget {
+  const SigninScreen({super.key});
 
   @override
-  State<SignupScreen> createState() => _SignupScreenState();
+  State<SigninScreen> createState() => _SigninScreenState();
 }
 
-class _SignupScreenState extends State<SignupScreen> {
+class _SigninScreenState extends State<SigninScreen> {
   // Form Data
   final _formKey = GlobalKey<FormState>();
   String customerId = '';
@@ -24,7 +26,7 @@ class _SignupScreenState extends State<SignupScreen> {
       debugPrint("Password: $password");
 
       // Demo login check
-      if (customerId == 'custm123456' && password == 'User123') {
+      if (customerId == 'Custm123456' && password == 'User123') {
         // Navigate to the dashboard page
         Navigator.pushReplacement(
           context,
@@ -46,38 +48,40 @@ class _SignupScreenState extends State<SignupScreen> {
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
-          gradient: SignupScreenStyles.containerGradient,
+          gradient: SigninScreenStyles.containerGradient,
         ),
         child: Column(
           children: [
-            // 🔹 Back and Next Buttons
+            // 🔹 Back Button
             Padding(
               padding: const EdgeInsets.all(24.0),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.grey[300],
-                      foregroundColor: Colors.black,
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                        (Set<MaterialState> states) {
+                          if (states.contains(MaterialState.hovered)) {
+                            return Colors.white;
+                          }
+                          return const Color(0xFF900603);
+                        },
+                      ),
+                      foregroundColor: MaterialStateProperty.resolveWith<Color>(
+                        (Set<MaterialState> states) {
+                          if (states.contains(MaterialState.hovered)) {
+                            return Colors.black;
+                          }
+                          return Colors.white;
+                        },
+                      ),
                     ),
                     onPressed: () {
                       // setCurrentStep('welcome');
                       Navigator.pop(context);
                     },
                     child: const Text('← Back'),
-                  ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.grey[300],
-                      foregroundColor: Colors.black,
-                    ),
-                    onPressed: () {
-                      // setCurrentStep('updateKYC33');
-                      // Example navigation
-                      debugPrint('Next pressed');
-                    },
-                    child: const Text('Next →'),
                   ),
                 ],
               ),
@@ -90,18 +94,24 @@ class _SignupScreenState extends State<SignupScreen> {
                     child: // 🔹 Card
                     Container(
                       margin: const EdgeInsets.only(top: 20),
-                      decoration: SignupScreenStyles.cardDecoration,
-                      padding: SignupScreenStyles.cardPadding,
+                      decoration: SigninScreenStyles.cardDecoration,
+                      padding: SigninScreenStyles.cardPadding,
                       constraints: BoxConstraints(
-                        maxWidth: SignupScreenStyles.cardMaxWidth,
+                        maxWidth: SigninScreenStyles.cardMaxWidth,
                       ),
                       child: Column(
                         children: [
                           // Header
-                          Text('Sign In', style: SignupScreenStyles.title),
-                          const SizedBox(height: 8),
-                          Text('', style: SignupScreenStyles.subtitle),
-                          const SizedBox(height: 24),
+                          Container(
+                            height: 100,
+                            width: 100,
+                            child: Image.asset('assets/logo.png'),
+                          ),
+                          const SizedBox(height: 0),
+                          Text('Log In', style: SigninScreenStyles.title),
+                          const SizedBox(height: 4),
+                          Text('', style: SigninScreenStyles.subtitle),
+                          const SizedBox(height: 0),
 
                           // 🔹 Form
                           Form(
@@ -112,15 +122,15 @@ class _SignupScreenState extends State<SignupScreen> {
                                 // Customer ID
                                 Text(
                                   'Customer ID',
-                                  style: SignupScreenStyles.label,
+                                  style: SigninScreenStyles.label,
                                 ),
                                 const SizedBox(height: 6),
                                 TextFormField(
                                   decoration:
-                                      SignupScreenStyles.inputDecoration(
+                                      SigninScreenStyles.inputDecoration(
                                         'Enter your customer ID',
                                       ),
-                                  style: SignupScreenStyles.inputText,
+                                  style: SigninScreenStyles.inputText,
                                   validator: (value) => value!.isEmpty
                                       ? 'Enter your customer ID'
                                       : null,
@@ -131,16 +141,16 @@ class _SignupScreenState extends State<SignupScreen> {
                                 // Password
                                 Text(
                                   'Password',
-                                  style: SignupScreenStyles.label,
+                                  style: SigninScreenStyles.label,
                                 ),
                                 const SizedBox(height: 6),
                                 TextFormField(
                                   obscureText: true,
                                   decoration:
-                                      SignupScreenStyles.inputDecoration(
+                                      SigninScreenStyles.inputDecoration(
                                         'Enter your password',
                                       ),
-                                  style: SignupScreenStyles.inputText,
+                                  style: SigninScreenStyles.inputText,
                                   validator: (value) => value!.isEmpty
                                       ? 'Enter your password'
                                       : null,
@@ -153,10 +163,10 @@ class _SignupScreenState extends State<SignupScreen> {
                                   width: double.infinity,
                                   child: ElevatedButton(
                                     style:
-                                        SignupScreenStyles.continueButtonStyle,
+                                        SigninScreenStyles.continueButtonStyle,
                                     onPressed: handleSubmit,
                                     child: const Text(
-                                      'Sign In',
+                                      'Log In',
                                       style: TextStyle(fontSize: 16),
                                     ),
                                   ),
@@ -167,10 +177,36 @@ class _SignupScreenState extends State<SignupScreen> {
 
                           const SizedBox(height: 16),
 
-                          Text(
-                            'Don’t have an account? Sign Up',
+                          RichText(
                             textAlign: TextAlign.center,
-                            style: SignupScreenStyles.termsText,
+                            text: TextSpan(
+                              text: 'Don’t have an account? ',
+                              style: SigninScreenStyles.termsText,
+                              children: [
+                                TextSpan(
+                                  text: 'Sign Up',
+                                  style: SigninScreenStyles.termsText.copyWith(
+                                    color: const Color.fromARGB(
+                                      255,
+                                      218,
+                                      93,
+                                      65,
+                                    ),
+                                    decoration: TextDecoration.underline,
+                                  ),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              const SignupScreen(),
+                                        ),
+                                      );
+                                    },
+                                ),
+                              ],
+                            ),
                           ),
 
                           const SizedBox(height: 8),
@@ -182,7 +218,9 @@ class _SignupScreenState extends State<SignupScreen> {
                             },
                             child: const Text(
                               'Forgot Password?',
-                              style: TextStyle(color: Colors.blue),
+                              style: TextStyle(
+                                color: Color.fromARGB(255, 232, 238, 243),
+                              ),
                             ),
                           ),
 

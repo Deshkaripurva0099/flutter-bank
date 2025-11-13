@@ -133,8 +133,8 @@ class _ServicesPageState extends State<ServicesPage> {
                       horizontal: 24,
                     ),
                     decoration: const BoxDecoration(color: Color(0xFF900603)),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    child: const Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           "Services",
@@ -144,15 +144,16 @@ class _ServicesPageState extends State<ServicesPage> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
+                        SizedBox(height: 8),
+                        Text(
+                          "Explore all the banking services we provide",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
                       ],
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: const Text(
-                      "Explore all the banking services we provide",
-                      style: kSubtitleStyle,
                     ),
                   ),
                   const SizedBox(height: 20),
@@ -298,7 +299,16 @@ class _ServicesPageState extends State<ServicesPage> {
                             children: [
                               ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.grey,
+                                  backgroundColor: const Color.fromARGB(
+                                    255,
+                                    218,
+                                    128,
+                                    128,
+                                  ),
+                                  foregroundColor: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
                                 ),
                                 onPressed: () =>
                                     setState(() => selectedService = null),
@@ -306,7 +316,16 @@ class _ServicesPageState extends State<ServicesPage> {
                               ),
                               ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.blue,
+                                  backgroundColor: const Color.fromARGB(
+                                    255,
+                                    172,
+                                    45,
+                                    22,
+                                  ),
+                                  foregroundColor: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
                                 ),
                                 onPressed: () =>
                                     handleProceed(selectedService!),

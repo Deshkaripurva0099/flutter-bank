@@ -102,8 +102,8 @@ class _DepositsPageUniqueState extends State<DepositsPageUnique> {
               right: 24,
             ),
             decoration: const BoxDecoration(color: Color(0xFF900603)),
-            child: const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            child: const Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   "Deposits",
@@ -112,6 +112,11 @@ class _DepositsPageUniqueState extends State<DepositsPageUnique> {
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
+                ),
+                SizedBox(height: 4),
+                Text(
+                  "Secure your future with guaranteed returns",
+                  style: TextStyle(color: Colors.white, fontSize: 14),
                 ),
               ],
             ),
