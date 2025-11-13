@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
+import '../pages/dashboard.dart';
+import '../pages/money_transfer_page.dart';
+import '../pages/profile.dart';
+import '../pages/screens/loan_dashboard.dart';
+import '../pages/screens/settings/settings_screen.dart';
 import 'topbar.dart';
 
 class AppLayout extends StatefulWidget {
@@ -14,122 +19,90 @@ class _AppLayoutState extends State<AppLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: _customDrawer(),
+      drawer: _customDrawer(context),
       appBar: NavbarTop(),
       backgroundColor: Colors.grey.shade100,
-      body: Column(children: [Expanded(child: widget.child)]),
+      body: Column(
+        children: [Expanded(child: widget.child)],
+      ),
     );
   }
 
-  Widget _customDrawer() {
+  Widget _customDrawer(BuildContext context) {
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
           DrawerHeader(
             decoration: const BoxDecoration(color: Colors.white),
-            child: Center(child: Image.asset('assets/logo.png', height: 140)),
+            child: Center(
+              child: Image.asset('assets/logo.png', height: 140),
+            ),
           ),
 
-          // UserAccountsDrawerHeader(
-          //   decoration: const BoxDecoration(color: Color(0xFF900603)),
-          //   accountName: const Text('Purvi D', style: TextStyle(fontSize: 18)),
-          //   accountEmail: const Text(
-          //     'purvi@example.com',
-          //     style: TextStyle(fontSize: 14),
-          //   ),
-          //   currentAccountPicture: CircleAvatar(
-          //     backgroundColor: Colors.white,
-          //     child: Text(
-          //       'P',
-          //       style: TextStyle(
-          //         fontSize: 24,
-          //         color: Color(0xFF900603),
-          //         fontWeight: FontWeight.bold,
-          //       ),
-          //     ),
-          //   ),
-          // ),
+          // 🏠 Dashboard
           ListTile(
             leading: const Icon(Icons.dashboard, color: Color(0xFF900603)),
-            title: const Text('DashBoard'),
+            title: const Text('Dashboard'),
             onTap: () {
               Navigator.pop(context);
-              Navigator.pushNamed(context, '/pages/dashboard');
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (_) => const DashboardPage()),
+              );
             },
           ),
+
+          // 👤 My Account
           ListTile(
             leading: const Icon(Icons.person, color: Color(0xFF900603)),
             title: const Text('My Account'),
             onTap: () {
               Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const ProfileSection()),
+              );
             },
           ),
+
+          // 💰 Loan
           ListTile(
-            leading: const Icon(Icons.wallet, color: Color(0xFF900603)),
-            title: const Text('Deposit'),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            leading: const Icon(
-              LucideIcons.dollarSign,
-              color: Color(0xFF900603),
-            ),
+            leading: const Icon(LucideIcons.dollarSign, color: Color(0xFF900603)),
             title: const Text('Loan'),
             onTap: () {
               Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const LoanDashboard()),
+              );
             },
           ),
+
+          // 🔁 Money Transfer
           ListTile(
             leading: const Icon(Icons.swap_horiz, color: Color(0xFF900603)),
             title: const Text('Money Transfer'),
             onTap: () {
-              Navigator.pushNamed(context, '/pages/money_transfer_page');
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.trending_up, color: Color(0xFF900603)),
-            title: const Text('Investment'),
-            onTap: () {
               Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const MoneyTransferPage()),
+              );
             },
           ),
-          ListTile(
-            leading: const Icon(Icons.credit_card, color: Color(0xFF900603)),
-            title: const Text('Cards'),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.support_agent, color: Color(0xFF900603)),
-            title: const Text('Services'),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.person, color: Color(0xFF900603)),
-            title: const Text('Profile'),
-            onTap: () {
-              Navigator.pushNamed(context, '/pages/profile');
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.report, color: Color(0xFF900603)),
-            title: const Text('Complaints'),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          Divider(),
+
+          // ⚙️ Settings
+          const Divider(),
           ListTile(
             leading: const Icon(Icons.settings, color: Color(0xFF900603)),
             title: const Text('Settings'),
             onTap: () {
               Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const SettingsScreen()),
+              );
             },
           ),
         ],
