@@ -3,6 +3,7 @@ import 'dart:math';
 import 'fixed_deposit.dart';
 import 'rd_page.dart';
 import 'tax_saver_fd.dart';
+import '../widgets/layout.dart'; // Import AppLayout
 
 class DepositsPageUnique extends StatefulWidget {
   const DepositsPageUnique({super.key});
@@ -88,220 +89,243 @@ class _DepositsPageUniqueState extends State<DepositsPageUnique> {
         deposits.map((d) => d["rate"]).reduce((a, b) => a + b) /
         deposits.length;
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Deposits"),
-        backgroundColor: const Color(0xFF900603),
-      ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // ===== HEADER =====
-            const Text(
-              "Secure your future with guaranteed returns",
-              style: TextStyle(fontSize: 16, color: Colors.black54),
+    return AppLayout(
+      child: Column(
+        children: [
+          // ===== HEADER =====
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.only(
+              top: 20,
+              bottom: 20,
+              left: 24,
+              right: 24,
             ),
-            const SizedBox(height: 20),
+            decoration: const BoxDecoration(color: Color(0xFF900603)),
+            child: const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Deposits",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 30),
 
-            // ===== Deposit Calculator =====
-            Card(
-              elevation: 3,
-              margin: const EdgeInsets.only(bottom: 20),
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      "Deposit Calculator",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    TextField(
-                      controller: principal,
-                      keyboardType: TextInputType.number,
-                      decoration: const InputDecoration(
-                        labelText: "Enter amount",
-                      ),
-                      onChanged: (_) => _calculateMaturity(),
-                    ),
-                    const SizedBox(height: 10),
-                    TextField(
-                      controller: termYears,
-                      keyboardType: TextInputType.number,
-                      decoration: const InputDecoration(
-                        labelText: "Term (years)",
-                      ),
-                      onChanged: (_) => _calculateMaturity(),
-                    ),
-                    const SizedBox(height: 10),
-                    TextField(
-                      controller: interestRate,
-                      keyboardType: const TextInputType.numberWithOptions(
-                        decimal: true,
-                      ),
-                      decoration: const InputDecoration(
-                        labelText: "Interest Rate (%)",
-                      ),
-                      onChanged: (_) => _calculateMaturity(),
-                    ),
-                    const SizedBox(height: 10),
-                    Container(
-                      padding: const EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFFFDDDD),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  // ===== Deposit Calculator =====
+                  Card(
+                    elevation: 3,
+                    margin: const EdgeInsets.only(bottom: 20),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Text(
-                            "Maturity Amount",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            "₹${maturity.toStringAsFixed(2)}",
-                            style: const TextStyle(
-                              color: Color(0xFF900603),
+                            "Deposit Calculator",
+                            style: TextStyle(
+                              fontSize: 18,
                               fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          TextField(
+                            controller: principal,
+                            keyboardType: TextInputType.number,
+                            decoration: const InputDecoration(
+                              labelText: "Enter amount",
+                            ),
+                            onChanged: (_) => _calculateMaturity(),
+                          ),
+                          const SizedBox(height: 10),
+                          TextField(
+                            controller: termYears,
+                            keyboardType: TextInputType.number,
+                            decoration: const InputDecoration(
+                              labelText: "Term (years)",
+                            ),
+                            onChanged: (_) => _calculateMaturity(),
+                          ),
+                          const SizedBox(height: 10),
+                          TextField(
+                            controller: interestRate,
+                            keyboardType: const TextInputType.numberWithOptions(
+                              decimal: true,
+                            ),
+                            decoration: const InputDecoration(
+                              labelText: "Interest Rate (%)",
+                            ),
+                            onChanged: (_) => _calculateMaturity(),
+                          ),
+                          const SizedBox(height: 10),
+                          Container(
+                            padding: const EdgeInsets.all(12),
+                            decoration: BoxDecoration(
+                              color: const Color(0xFFFFDDDD),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Text(
+                                  "Maturity Amount",
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  "₹${maturity.toStringAsFixed(2)}",
+                                  style: const TextStyle(
+                                    color: Color(0xFF900603),
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ],
                       ),
                     ),
-                  ],
-                ),
+                  ),
+
+                  // ===== Deposit Options =====
+                  const Text(
+                    "Deposit Options",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 5),
+                  Wrap(
+                    spacing: 25,
+                    runSpacing: 25,
+                    children: [
+                      PlanCard(
+                        title: "Fixed Deposit",
+                        rate: 7.5,
+                        minAmount: 1000,
+                        term: "10 years",
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const FdCalculatorPage(),
+                            ),
+                          );
+                        },
+                      ),
+                      PlanCard(
+                        title: "Recurring Deposit",
+                        rate: 7.0,
+                        minAmount: 500,
+                        term: "10 years",
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const RDPage(),
+                            ),
+                          );
+                        },
+                      ),
+                      PlanCard(
+                        title: "Tax Saver FD",
+                        rate: 7.75,
+                        minAmount: 100,
+                        term: "5 years",
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const TaxSaverFD(),
+                            ),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 20),
+
+                  // ===== My Deposits =====
+                  const Text(
+                    "My Deposits",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 10),
+                  Column(
+                    children: deposits.map((d) {
+                      return Card(
+                        child: ListTile(
+                          leading: const Icon(
+                            Icons.savings,
+                            color: Color(0xFF900603),
+                          ),
+                          title: Text(d["type"]),
+                          subtitle: Text(
+                            "${d["rate"]}% p.a. · Matures on ${_formatDate(d["maturityDate"])}",
+                          ),
+                          trailing: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("₹${d["amount"].toStringAsFixed(0)}"),
+                              Text(
+                                "Maturity: ₹${d["maturityAmount"].toStringAsFixed(0)}",
+                                style: const TextStyle(color: Colors.green),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    }).toList(),
+                  ),
+
+                  const SizedBox(height: 20),
+
+                  // ===== Summary Cards =====
+                  GridView.count(
+                    crossAxisCount: 2,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    mainAxisSpacing: 8,
+                    crossAxisSpacing: 8,
+                    childAspectRatio: 2,
+                    children: [
+                      SummaryCard(
+                        title: "Total Deposits",
+                        value: "₹${totalDeposits.toStringAsFixed(0)}",
+                        subtitle: "Across ${deposits.length} accounts",
+                      ),
+                      SummaryCard(
+                        title: "Expected Returns",
+                        value: "₹${expectedReturns.toStringAsFixed(0)}",
+                        subtitle: "Total interest earned",
+                      ),
+                      const SummaryCard(
+                        title: "Next Maturity",
+                        value: "Dec 2025",
+                        subtitle: "Fixed Deposit",
+                      ),
+                      SummaryCard(
+                        title: "Avg. Interest",
+                        value: "${avgInterest.toStringAsFixed(2)}%",
+                        subtitle: "Weighted average",
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
-
-            // ===== Deposit Options =====
-            const Text(
-              "Deposit Options",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 5),
-            Wrap(
-              spacing: 25,
-              runSpacing: 25,
-              children: [
-                PlanCard(
-                  title: "Fixed Deposit",
-                  rate: 7.5,
-                  minAmount: 1000,
-                  term: "10 years",
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const FdCalculatorPage(),
-                      ),
-                    );
-                  },
-                ),
-                PlanCard(
-                  title: "Recurring Deposit",
-                  rate: 7.0,
-                  minAmount: 500,
-                  term: "10 years",
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const RDPage()),
-                    );
-                  },
-                ),
-                PlanCard(
-                  title: "Tax Saver FD",
-                  rate: 7.75,
-                  minAmount: 100,
-                  term: "5 years",
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const TaxSaverFD(),
-                      ),
-                    );
-                  },
-                ),
-              ],
-            ),
-            const SizedBox(height: 20),
-
-            // ===== My Deposits =====
-            const Text(
-              "My Deposits",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 10),
-            Column(
-              children: deposits.map((d) {
-                return Card(
-                  child: ListTile(
-                    leading: const Icon(
-                      Icons.savings,
-                      color: Color(0xFF900603),
-                    ),
-                    title: Text(d["type"]),
-                    subtitle: Text(
-                      "${d["rate"]}% p.a. · Matures on ${_formatDate(d["maturityDate"])}",
-                    ),
-                    trailing: Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("₹${d["amount"].toStringAsFixed(0)}"),
-                        Text(
-                          "Maturity: ₹${d["maturityAmount"].toStringAsFixed(0)}",
-                          style: const TextStyle(color: Colors.green),
-                        ),
-                      ],
-                    ),
-                  ),
-                );
-              }).toList(),
-            ),
-
-            const SizedBox(height: 20),
-
-            // ===== Summary Cards =====
-            GridView.count(
-              crossAxisCount: 2,
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              mainAxisSpacing: 8,
-              crossAxisSpacing: 8,
-              childAspectRatio: 2,
-              children: [
-                SummaryCard(
-                  title: "Total Deposits",
-                  value: "₹${totalDeposits.toStringAsFixed(0)}",
-                  subtitle: "Across ${deposits.length} accounts",
-                ),
-                SummaryCard(
-                  title: "Expected Returns",
-                  value: "₹${expectedReturns.toStringAsFixed(0)}",
-                  subtitle: "Total interest earned",
-                ),
-                const SummaryCard(
-                  title: "Next Maturity",
-                  value: "Dec 2025",
-                  subtitle: "Fixed Deposit",
-                ),
-                SummaryCard(
-                  title: "Avg. Interest",
-                  value: "${avgInterest.toStringAsFixed(2)}%",
-                  subtitle: "Weighted average",
-                ),
-              ],
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

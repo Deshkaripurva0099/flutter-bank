@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:neobank/widgets/layout.dart';
 import 'package:neobank/widgets/topbar.dart';
 
 class InternationalTransferPage extends StatefulWidget {
@@ -60,13 +61,10 @@ class _InternationalTransferPageState extends State<InternationalTransferPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: NavbarTop(),
-      backgroundColor: const Color(0xFFF8F9FA),
-      body: SafeArea(
+    return AppLayout(
+      child: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(16),
-
           child: Card(
             margin: const EdgeInsets.only(top: 40),
             shape: RoundedRectangleBorder(

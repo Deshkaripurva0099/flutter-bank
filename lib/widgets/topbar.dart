@@ -38,6 +38,23 @@ class _NavbarTopState extends State<NavbarTop> {
           // ),
           const SizedBox(width: 20),
 
+          //   width: 70,
+          //   height: 70,
+          //   child: Image.asset('assets/logo.png', fit: BoxFit.contain),
+          // ),
+          // const SizedBox(width: 2),
+
+          // const Text(
+          //   'NeoBank',
+          //   style: TextStyle(
+          //     color: Color.fromARGB(255, 134, 9, 0),
+          //     fontSize: 18,
+          //     fontWeight: FontWeight.w900,
+          //   ),
+          // ),
+
+          // const SizedBox(width: 10),
+
           // Search icon or field
           Expanded(
             child: showSearchField

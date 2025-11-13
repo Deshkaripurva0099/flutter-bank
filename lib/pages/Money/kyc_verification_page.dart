@@ -1,6 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:neobank/widgets/layout.dart';
 import 'package:neobank/widgets/topbar.dart';
 import 'package:signature/signature.dart';
 import 'package:image_picker/image_picker.dart';
@@ -450,14 +451,19 @@ class _UpdateKYCPageState extends State<UpdateKYCPage> {
       ),
     );
 
-    return Scaffold(
-      appBar: NavbarTop(),
-      backgroundColor: Colors.white,
-      body: LayoutBuilder(
+    return AppLayout(
+      child: LayoutBuilder(
         builder: (context, constraints) {
           if (constraints.maxWidth > 768) {
-            return Row(children: [leftPanel, rightPanel]);
+            // Wide screens: side-by-side panels
+            return Row(
+              children: [
+                Expanded(child: leftPanel),
+                Expanded(child: rightPanel),
+              ],
+            );
           } else {
+            // Narrow screens: stacked panels
             return Column(children: [leftPanel, rightPanel]);
           }
         },

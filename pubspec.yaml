@@ -39,39 +39,19 @@ dependencies:
   image_picker: ^1.1.0  
   signature: ^6.1.0  
   intl: ^0.20.2
-  
 
-  
-  # 🎥 For playing videos (used in Video KYC / PAN verification)
+  camera_camera: ^3.0.0
+#signature: ^6.3.0
+#image_picker: ^1.1.2
+  image_cropper: ^11.0.0
+  crypto: ^3.0.3
+  http: ^1.2.2
+  shared_preferences: ^2.3.2
+  email_validator: ^3.0.0
+  pin_code_fields: ^8.0.1
+#font_awesome_flutter: ^10.7.0
   video_player: ^2.9.2
 
-  # 📸 For camera functionality in KYC
-  camera_camera: ^3.0.0
-
-
-
- 
-
-  # 🎯 For image cropping (optional)
-  image_cropper: ^11.0.0
-
-  # 🔐 For security and encryption
-  crypto: ^3.0.3
-
-  # 🌐 For API calls
-  http: ^1.2.2
-
-  # 💾 For local storage
-  shared_preferences: ^2.3.2
-
-  # 📧 For email validation
-  email_validator: ^3.0.0
-
-  # 🔢 For OTP fields
-  pin_code_fields: ^8.0.1
-
-
-  
 
 
 
@@ -102,6 +82,11 @@ flutter:
   assets:
     #- assets/neo.png
     - assets/logo.png
+
+    - assets/fd-banner.png
+    - assets/neobank_logo.png
+   
+
     - assets/neobank-white.png
     - assets/Card1.png
     - assets/Card2.png
