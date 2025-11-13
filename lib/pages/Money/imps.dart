@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:neobank/widgets/layout.dart';
 import 'package:neobank/widgets/topbar.dart';
 
 class ImpsFormPage extends StatefulWidget {
@@ -68,10 +69,8 @@ class _ImpsFormPageState extends State<ImpsFormPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: NavbarTop(),
-      backgroundColor: const Color(0xFFF8F9FA),
-      body: Center(
+    return AppLayout(
+      child: Center(
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(vertical: 36, horizontal: 30),
           child: Container(

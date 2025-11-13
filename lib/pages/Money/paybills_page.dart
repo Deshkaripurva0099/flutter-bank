@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:neobank/widgets/layout.dart';
 import 'package:neobank/widgets/topbar.dart';
 
 class PayBillsPage extends StatefulWidget {
@@ -46,10 +47,8 @@ class _PayBillsPageState extends State<PayBillsPage> {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
 
-    return Scaffold(
-      appBar: NavbarTop(),
-      backgroundColor: const Color(0xFFFAFAFA),
-      body: GestureDetector(
+    return AppLayout(
+      child: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: SafeArea(
           child: Center(

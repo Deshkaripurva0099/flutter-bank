@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:neobank/widgets/layout.dart';
 import 'package:neobank/widgets/topbar.dart';
 
 class SendMoneyPage extends StatefulWidget {
@@ -81,11 +82,8 @@ class _SendMoneyPageState extends State<SendMoneyPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: NavbarTop(),
-      backgroundColor: const Color(0xFFFAFAFA),
-
-      body: GestureDetector(
+    return AppLayout(
+      child: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: SingleChildScrollView(
           padding: const EdgeInsets.only(
