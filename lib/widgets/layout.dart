@@ -5,7 +5,6 @@ import 'topbar.dart';
 class AppLayout extends StatefulWidget {
   final Widget child;
   const AppLayout({super.key, required this.child});
-
   @override
   State<AppLayout> createState() => _AppLayoutState();
 }
@@ -30,7 +29,6 @@ class _AppLayoutState extends State<AppLayout> {
             decoration: const BoxDecoration(color: Colors.white),
             child: Center(child: Image.asset('assets/logo.png', height: 140)),
           ),
-
           // UserAccountsDrawerHeader(
           //   decoration: const BoxDecoration(color: Color(0xFF900603)),
           //   accountName: const Text('Purvi D', style: TextStyle(fontSize: 18)),
@@ -52,27 +50,25 @@ class _AppLayoutState extends State<AppLayout> {
           // ),
           ListTile(
             leading: const Icon(Icons.dashboard, color: Color(0xFF900603)),
-            title: const Text('Dashboard'),
+            title: const Text('DashBoard'),
             onTap: () {
               Navigator.pop(context);
-              Navigator.pushNamed(context, '/dashboard');
+              Navigator.pushNamed(context, '/pages/dashboard');
             },
           ),
           ListTile(
             leading: const Icon(Icons.person, color: Color(0xFF900603)),
             title: const Text('My Account'),
             onTap: () {
-              Navigator.pop(context); // close drawer if inside Drawer
-              Navigator.pushNamed(context, '/myAccount'); // match exact route
+              Navigator.pop(context);
+              Navigator.pushNamed(context, '/myAccount');
             },
           ),
-
           ListTile(
             leading: const Icon(Icons.wallet, color: Color(0xFF900603)),
             title: const Text('Deposit'),
             onTap: () {
               Navigator.pop(context);
-              Navigator.pushNamed(context, '/deposit');
             },
           ),
           ListTile(
@@ -85,23 +81,20 @@ class _AppLayoutState extends State<AppLayout> {
               Navigator.pop(context);
             },
           ),
-
           ListTile(
             leading: const Icon(Icons.swap_horiz, color: Color(0xFF900603)),
             title: const Text('Money Transfer'),
             onTap: () {
-              Navigator.pop(context);
-              Navigator.pushNamed(context, '/moneyTransfer');
+              Navigator.pushNamed(context, '/pages/money_transfer_page');
             },
           ),
           ListTile(
             leading: const Icon(Icons.trending_up, color: Color(0xFF900603)),
             title: const Text('Investment'),
             onTap: () {
-              Navigator.pushNamed(context, '/investment'); // route string
+              Navigator.pop(context);
             },
           ),
-
           ListTile(
             leading: const Icon(Icons.credit_card, color: Color(0xFF900603)),
             title: const Text('Cards'),
@@ -110,21 +103,18 @@ class _AppLayoutState extends State<AppLayout> {
               Navigator.pushNamed(context, '/cards');
             },
           ),
-
           ListTile(
             leading: const Icon(Icons.support_agent, color: Color(0xFF900603)),
             title: const Text('Services'),
             onTap: () {
               Navigator.pop(context);
-              Navigator.pushNamed(context, '/services');
             },
           ),
           ListTile(
             leading: const Icon(Icons.person, color: Color(0xFF900603)),
             title: const Text('Profile'),
             onTap: () {
-              Navigator.pop(context);
-              Navigator.pushNamed(context, '/profile');
+              Navigator.pushNamed(context, '/pages/profile');
             },
           ),
           ListTile(
@@ -132,7 +122,6 @@ class _AppLayoutState extends State<AppLayout> {
             title: const Text('Complaints'),
             onTap: () {
               Navigator.pop(context);
-              Navigator.pushNamed(context, '/complaints');
             },
           ),
           Divider(),
