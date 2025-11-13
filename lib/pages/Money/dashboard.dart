@@ -1,7 +1,8 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:neobank/pages/Cards/ClienCard.dart';
+
+import 'package:neobank/pages/Cards/clientcard.dart';
 import 'package:neobank/pages/Money/add_money.dart';
 import 'package:neobank/pages/Money/paybills_page.dart';
 import 'package:neobank/pages/Money/send_money_page.dart';
@@ -135,55 +136,109 @@ class _DashboardPageState extends State<DashboardPage> {
                       final action = actions[index];
                       return InkWell(
                         borderRadius: BorderRadius.circular(14),
+                        // onTap: () {
+                        //   final label = action['label'];
+
+                        //   if (label == "Send Money") {
+                        //     Navigator.push(
+                        //       context,
+                        //       MaterialPageRoute(
+                        //         builder: (context) => const SendMoneyPage(),
+                        //       ),
+                        //     );
+                        //   } else if (label == "Pay Bills") {
+                        //     Navigator.push(
+                        //       context,
+                        //       MaterialPageRoute(
+                        //         builder: (context) => const PayBillsPage(),
+                        //       ),
+                        //     );
+                        //   } else if (label == "Add Money") {
+                        //     Navigator.push(
+                        //       context,
+                        //       MaterialPageRoute(
+                        //         builder: (context) => const AddMoneyPage(),
+                        //       ),
+                        //     );
+                        //   } else if (label == "Investment") {
+                        //     Navigator.push(
+                        //       context,
+                        //       MaterialPageRoute(
+                        //         builder: (context) => const InvestmentPage(),
+                        //       ),
+                        //     );
+                        //   } else if (label == "Fixed Deposit") {
+                        //     Navigator.push(
+                        //       context,
+                        //       MaterialPageRoute(
+                        //         builder: (context) =>
+                        //             const DepositsPageUnique(),
+                        //       ),
+                        //     );
+                        //   } else if (label == "Cards") {
+                        //     Navigator.push(
+                        //       context,
+                        //       MaterialPageRoute(
+                        //         builder: (context) => const ClientCard(),
+                        //       ),
+                        //     );
+                        //   }
+                        // },
                         onTap: () {
                           final label = action['label'];
 
-                          if (label == "Send Money") {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const SendMoneyPage(),
-                              ),
-                            );
-                          } else if (label == "Pay Bills") {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const PayBillsPage(),
-                              ),
-                            );
-                          } else if (label == "Add Money") {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const AddMoneyPage(),
-                              ),
-                            );
-                          } else if (label == "Investment") {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const InvestmentPage(),
-                              ),
-                            );
-                          } else if (label == "Fixed Deposit") {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    const DepositsPageUnique(),
-                              ),
-                            );
-                          } else if (label == "Cards") {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const ClientCard(),
-                              ),
-                            );
+                          switch (label) {
+                            case "Send Money":
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => const SendMoneyPage(),
+                                ),
+                              );
+                              break;
+                            case "Pay Bills":
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => const PayBillsPage(),
+                                ),
+                              );
+                              break;
+                            case "Add Money":
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => const AddMoneyPage(),
+                                ),
+                              );
+                              break;
+                            case "Investment":
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => const InvestmentPage(),
+                                ),
+                              );
+                              break;
+                            case "Fixed Deposit":
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => const DepositsPageUnique(),
+                                ),
+                              );
+                              break;
+                            case "Cards":
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      AppLayout(child: const ClientCard()), //
+                                ),
+                              );
+                              break;
                           }
                         },
-
                         child: Container(
                           decoration: BoxDecoration(
                             color: Colors.white,

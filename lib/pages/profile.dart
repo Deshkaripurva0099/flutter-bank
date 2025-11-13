@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
+import 'package:neobank/pages/SignIN/signupscreen.dart';
 import 'package:neobank/widgets/layout.dart';
 import 'package:neobank/widgets/topbar.dart';
 
@@ -11,6 +12,86 @@ const Color secondaryColor = Color(0xFFb91c1c);
 const Color successColor = Color(0xFF065f46);
 const Color dangerColor = Color(0xFF991b1b);
 const Color backgroundColor = Color(0xFFF8F9FA);
+
+Future<void> _showThankYouLogoutDialog(BuildContext context) async {
+  // Show the dialog
+  showDialog(
+    context: context,
+    barrierDismissible: false, // Prevent dismiss by tapping outside
+    builder: (BuildContext context) {
+      return Dialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        child: Container(
+          decoration: BoxDecoration(
+            color: primaryColor,
+            borderRadius: BorderRadius.circular(20.0),
+            boxShadow: const [
+              BoxShadow(
+                color: Colors.black26,
+                blurRadius: 10.0,
+                offset: Offset(0, 5),
+              ),
+            ],
+          ),
+          padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 20.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              const SizedBox(height: 20),
+              const Text(
+                'Thank You!',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 10),
+              const Text(
+                'We Hope You Enjoyed\nOur Banking Services! 🏦',
+                style: TextStyle(
+                  color: Colors.white70,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 20),
+              Container(
+                width: 50,
+                height: 3,
+                decoration: BoxDecoration(
+                  color: Colors.white70,
+                  borderRadius: BorderRadius.circular(1.5),
+                ),
+              ),
+              const SizedBox(height: 15),
+              const Text(
+                'See You Soon! 👋',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontStyle: FontStyle.italic,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 10),
+            ],
+          ),
+        ),
+      );
+    },
+  );
+
+  // Wait for 1.5 seconds (so user can see the card)
+  await Future.delayed(const Duration(seconds: 1, milliseconds: 500));
+
+  // Close the dialog
+  Navigator.of(context).pop();
+}
 
 class ProfileSection extends StatefulWidget {
   const ProfileSection({super.key});
@@ -1666,9 +1747,15 @@ class _ProfileSectionState extends State<ProfileSection> {
               const Divider(height: 20),
               Center(
                 child: TextButton.icon(
-                  onPressed: () => ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Logging out...')),
-                  ),
+                  onPressed: () async {
+                    await _showThankYouLogoutDialog(context);
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SignupScreen(),
+                      ),
+                    );
+                  },
                   icon: const Icon(Icons.logout, color: Color(0xFF900603)),
                   label: const Text(
                     'Log Out',
