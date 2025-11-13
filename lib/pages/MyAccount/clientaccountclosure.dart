@@ -214,7 +214,7 @@ class _AccountClosureState extends State<AccountClosure> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                'assets/neobank-white.png',
+                'assets/images/neobank-white.png',
                 height: 55,
                 fit: BoxFit.contain,
                 errorBuilder: (context, error, stackTrace) {
@@ -263,6 +263,7 @@ class _AccountClosureState extends State<AccountClosure> {
       ],
     );
   }
+  
   // 🔹 Stepper UI
   Widget _buildStepper() {
     final steps = [

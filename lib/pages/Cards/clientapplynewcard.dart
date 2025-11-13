@@ -60,18 +60,22 @@ class _ApplyNewCardState extends State<ApplyNewCard> {
         backgroundColor: primaryRed,
         title: const Text("Apply New Card"),
         centerTitle: true,
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: false, // custom back button
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () {
+            Navigator.pop(context); // 👈 Go back to previous page
+          },
         ),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(20),
           child: Center(
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width > 800 ? 600 : double.infinity,
+            child: Container(
+              width: MediaQuery.of(context).size.width > 800
+                  ? 600
+                  : double.infinity,
               child: Column(
                 children: [
                   Text(
@@ -152,26 +156,26 @@ class _ApplyNewCardState extends State<ApplyNewCard> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.grey[400],
                   foregroundColor: Colors.black,
-                  padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
                 ),
                 onPressed: handleCancel,
-                child: const Text(
-                  "Cancel",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                ),
+                child: const Text("Cancel",
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
               ),
               const SizedBox(width: 16),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: primaryRed,
                   foregroundColor: Colors.white,
-                  padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
                 ),
                 onPressed: handleSubmit,
-                child: const Text(
-                  "Submit",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                ),
+                child: const Text("Submit",
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
               ),
             ],
           ),
@@ -190,10 +194,9 @@ class _ApplyNewCardState extends State<ApplyNewCard> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            label,
-            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
-          ),
+          Text(label,
+              style:
+                  const TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
           const SizedBox(height: 4),
           TextFormField(
             controller: _controllers[name],
@@ -204,8 +207,10 @@ class _ApplyNewCardState extends State<ApplyNewCard> {
               return null;
             },
             decoration: InputDecoration(
-              border: OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
-              contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
+              contentPadding:
+                  const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
             ),
           ),
         ],
@@ -232,7 +237,8 @@ class _ApplyNewCardState extends State<ApplyNewCard> {
       _inputField("PAN Number", "pan"),
       _inputField("Aadhaar Number (Optional)", "aadhaar"),
       _inputField("CIBIL Score", "cibil", type: TextInputType.number),
-      _inputField("Credit Limit Required (Optional)", "creditLimit",
+      _inputField(
+          "Credit Limit Required (Optional)", "creditLimit",
           type: TextInputType.number),
       _dropdownField("Existing Credit Card Holder?", "existingCard",
           ["Yes", "No"], "Select Option"),
@@ -247,15 +253,16 @@ class _ApplyNewCardState extends State<ApplyNewCard> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            label,
-            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
-          ),
+          Text(label,
+              style:
+                  const TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
           const SizedBox(height: 4),
           DropdownButtonFormField<String>(
             decoration: InputDecoration(
-              border: OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
-              contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
+              contentPadding:
+                  const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
             ),
             value: _controllers[name]!.text.isEmpty
                 ? null

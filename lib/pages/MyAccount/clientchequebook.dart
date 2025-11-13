@@ -213,7 +213,6 @@ class _ChequeBookRequestState extends State<ChequeBookRequest> {
                     onPressed: resetForm,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: primaryRed,
-                      foregroundColor: Colors.white,
                       padding: const EdgeInsets.symmetric(vertical: 14),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
@@ -278,7 +277,7 @@ class _ChequeBookRequestState extends State<ChequeBookRequest> {
                             height: 60,
                             width: 60,
                             child: Image.asset(
-                              'assets/neobank-white.png',
+                              'assets/images/neobank-white.png',
                               fit: BoxFit.contain,
                               errorBuilder: (context, error, stackTrace) {
                                 return Icon(
@@ -426,10 +425,6 @@ class _ChequeBookRequestState extends State<ChequeBookRequest> {
         return "";
     }
   }
-
-
-
-  
 
   Widget _buildFormContent() {
     return Column(
@@ -582,189 +577,42 @@ class _ChequeBookRequestState extends State<ChequeBookRequest> {
     );
   }
 
-
-
-// Delivery Type Selection Widget - Compact Version
-Widget _deliveryTypeField() {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Text(
-        "Delivery Type",
-        style: TextStyle(
-          fontWeight: FontWeight.w600,
-          color: Colors.grey[700],
-          fontSize: 14,
+  // Delivery Type Selection Widget
+  Widget _deliveryTypeField() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "Delivery Type",
+          style: TextStyle(
+            fontWeight: FontWeight.w600,
+            color: Colors.grey[700],
+            fontSize: 14,
+          ),
         ),
-      ),
-      const SizedBox(height: 12),
-      
-      // Radio Buttons Container
-      Container(
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey.shade300),
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Column(
+        const SizedBox(height: 12),
+        Row(
           children: [
-            // Home Delivery Option
-            ListTile(
-              contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-              leading: Radio<String>(
-                value: "home",
-                groupValue: formData['deliveryType'],
-                onChanged: (value) {
-                  setState(() {
-                    formData['deliveryType'] = value!;
-                  });
-                },
-                activeColor: primaryRed,
+            Expanded(
+              child: _buildDeliveryOption(
+                "Home Delivery",
+                "home",
+                Icons.home,
               ),
-              title: Row(
-                children: [
-                  Icon(Icons.home, color: primaryRed, size: 20),
-                  SizedBox(width: 8),
-                  Text("Home Delivery"),
-                ],
-              ),
-              onTap: () {
-                setState(() {
-                  formData['deliveryType'] = "home";
-                });
-              },
             ),
-            
-            Divider(height: 1, color: Colors.grey.shade300),
-            
-            // Branch Collection Option
-            ListTile(
-              contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-              leading: Radio<String>(
-                value: "branch",
-                groupValue: formData['deliveryType'],
-                onChanged: (value) {
-                  setState(() {
-                    formData['deliveryType'] = value!;
-                  });
-                },
-                activeColor: primaryRed,
-              ),
-              title: Row(
-                children: [
-                  Icon(Icons.account_balance, color: primaryRed, size: 20),
-                  SizedBox(width: 8),
-                  Text("Branch Collection"),
-                ],
-              ),
-              onTap: () {
-                setState(() {
-                  formData['deliveryType'] = "branch";
-                });
-              },
-            ),
-          ],
-        ),
-      ),
-    ],
-  );
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
- // Delivery Type Selection Widget
-Widget _deliveryTypeField() {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Text(
-        "Delivery Type",
-        style: TextStyle(
-          fontWeight: FontWeight.w600,
-          color: Colors.grey[700],
-          fontSize: 14,
-        ),
-      ),
-      const SizedBox(height: 12),
-      
-      // Home Delivery Radio Button
-      Container(
-        width: double.infinity,
-        margin: EdgeInsets.only(bottom: 10),
-        child: Row(
-          children: [
-            Radio<String>(
-              value: "home",
-              groupValue: formData['deliveryType'],
-              onChanged: (value) {
-                setState(() {
-                  formData['deliveryType'] = value!;
-                });
-              },
-              activeColor: primaryRed,
-            ),
-            SizedBox(width: 8),
-            Icon(Icons.home, color: primaryRed, size: 20),
-            SizedBox(width: 8),
-            Text(
-              "Home Delivery",
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 14,
+            SizedBox(width: 15),
+            Expanded(
+              child: _buildDeliveryOption(
+                "Branch Collection",
+                "branch",
+                Icons.account_balance,
               ),
             ),
           ],
         ),
-      ),
-      
-      // Branch Collection Radio Button
-      Container(
-        width: double.infinity,
-        child: Row(
-          children: [
-            Radio<String>(
-              value: "branch",
-              groupValue: formData['deliveryType'],
-              onChanged: (value) {
-                setState(() {
-                  formData['deliveryType'] = value!;
-                });
-              },
-              activeColor: primaryRed,
-            ),
-            SizedBox(width: 8),
-            Icon(Icons.account_balance, color: primaryRed, size: 20),
-            SizedBox(width: 8),
-            Text(
-              "Branch Collection",
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 14,
-              ),
-            ),
-          ],
-        ),
-      ),
-    ],
-  );
-}
+      ],
+    );
+  }
 
   Widget _buildDeliveryOption(String title, String value, IconData icon) {
     bool isSelected = formData['deliveryType'] == value;
@@ -806,7 +654,7 @@ Widget _deliveryTypeField() {
         ),
       ),
     );
-  }*/
+  }
 
   Widget _textField(String label, String key, String hint, {bool multiline = false}) {
     bool isValid = _fieldValidations[key] ?? true;
@@ -939,7 +787,6 @@ Widget _deliveryTypeField() {
             onPressed: validate ? (isLastStep ? handleSubmit : nextStep) : null,
             style: ElevatedButton.styleFrom(
               backgroundColor: primaryRed,
-              foregroundColor: Colors.white,
               padding: EdgeInsets.symmetric(vertical: 15),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8),

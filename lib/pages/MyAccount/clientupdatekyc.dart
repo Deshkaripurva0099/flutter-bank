@@ -157,7 +157,7 @@ class _UpdateKYCState extends State<UpdateKYC> {
                         height: 100,
                         width: 100,
                         child: Image.asset(
-                          'assets/neobank-white.png',
+                          'assets/images/neobank-white.png',
                           fit: BoxFit.contain,
                           errorBuilder: (context, error, stackTrace) {
                             return Icon(
@@ -314,7 +314,6 @@ class _UpdateKYCState extends State<UpdateKYC> {
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFF900603),
-                foregroundColor: Colors.white,
                 padding: const EdgeInsets.symmetric(vertical: 15),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
               ),
@@ -452,7 +451,6 @@ class _UpdateKYCState extends State<UpdateKYC> {
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFF900603),
-                foregroundColor: Colors.white,
                 padding: const EdgeInsets.symmetric(vertical: 15),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                 elevation: 0,
