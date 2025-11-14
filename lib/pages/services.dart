@@ -5,6 +5,7 @@ import 'fixed_deposit.dart'; // Import Fixed Deposit form
 import 'rd_page.dart'; // Import RD Page
 import 'deposit.dart';
 import '../widgets/layout.dart'; // Import AppLayout
+import 'screens/loan_dashboard.dart'; // Import LoanDashboard
 
 class ServicesPage extends StatefulWidget {
   const ServicesPage({super.key});
@@ -107,6 +108,30 @@ class _ServicesPageState extends State<ServicesPage> {
         context,
         MaterialPageRoute(builder: (context) => const DepositsPageUnique()),
       );
+    } else if (service == "Loan Services" ||
+        service == "Loan Eligibility Check" ||
+        service == "EMI Calculator") {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const LoanDashboard()),
+      );
+    } else if (service == "Credit Card Services" ||
+        service == "Block / Unblock Card" ||
+        service == "Change Card PIN") {
+      Navigator.pushNamed(context, '/cards');
+    } else if (service == "Set Spending Limit" ||
+        service == "Fund Transfer" ||
+        service == "UPI Payments" ||
+        service == "Bill Payments" ||
+        service == "Add Beneficiary" ||
+        service == "Mobile Banking") {
+      Navigator.pushNamed(context, '/pages/money_transfer_page');
+    } else if (service == "Report Fraud" ||
+        service == "Raise Service Request" ||
+        service == "Feedback / Complaint" ||
+        service == "Stop Cheque Payment" ||
+        service == "Cheque Book Request") {
+      Navigator.pushNamed(context, '/complaints');
     } else {
       ScaffoldMessenger.of(
         context,

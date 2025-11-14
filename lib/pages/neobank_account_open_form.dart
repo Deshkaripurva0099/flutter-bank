@@ -40,9 +40,20 @@ class _NeobankAccountOpenFormState extends State<NeobankAccountOpenForm> {
         elevation: 0,
       ),
       body: Center(
-        child: SizedBox(
+        child: Container(
           width:
-              MediaQuery.of(context).size.width * 0.7, // Increased width to 70%
+              MediaQuery.of(context).size.width * 0.9, // Increased width to 90%
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.1),
+                blurRadius: 10,
+                offset: const Offset(0, 4),
+              ),
+            ],
+          ),
           child: SingleChildScrollView(
             // Re-adding SingleChildScrollView to prevent overflow if content exceeds height
             child: Padding(

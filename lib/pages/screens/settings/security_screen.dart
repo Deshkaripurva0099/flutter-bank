@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import '../../models/settings_models.dart';
+import '../../../widgets/layout.dart'; // Import AppLayout
 
 class SecurityScreen extends StatefulWidget {
   const SecurityScreen({Key? key}) : super(key: key);
@@ -202,32 +203,6 @@ class _SecurityScreenState extends State<SecurityScreen> {
           );
         },
       ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final isMobile = constraints.maxWidth < 600;
-
-        return Scaffold(
-          backgroundColor: const Color(0xFFF7F8FA),
-          body: SingleChildScrollView(
-            child: Column(
-              children: [
-                _buildHeader(isMobile),
-                Padding(
-                  padding: EdgeInsets.all(isMobile ? 12 : 16),
-                  child: isMobile
-                      ? _buildMobileLayout()
-                      : _buildDesktopLayout(),
-                ),
-              ],
-            ),
-          ),
-        );
-      },
     );
   }
 
